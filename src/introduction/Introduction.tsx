@@ -3,11 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import myAvatar from "./static/avatar.png";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import { nanoid } from 'nanoid'
-
 
 function MyAvatar() {
     return (
@@ -24,29 +19,6 @@ function MyAvatar() {
             </div>
         </div>
     )
-}
-
-
-
-function getOutlines() {
-    return [
-        <ListItem key={nanoid()}>
-            <ListItemText
-                primary="About me"
-            />
-        </ListItem>,
-        <ListItem key={nanoid()}>
-            <ListItemText
-                primary="Tech Stuff"
-            />
-        </ListItem>,
-        <ListItem key={nanoid()}>
-            <ListItemText
-                onClick={() => { console.log("Non-tech stuff") }}
-                primary="Non-tech Stuff"
-            />
-        </ListItem>
-    ]
 }
 
 const outlineItemStyle = {
