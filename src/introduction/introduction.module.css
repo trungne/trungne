@@ -1,0 +1,56 @@
+.introduction {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.outline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.outlineHeader {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.outlineItems {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.outlineItem {
+    color: whitesmoke;
+    text-align: center;
+    
+}
+
+.avatarContainer {
+    width: 50%;
+    height: 100%;
+    padding: 1em 1em 1em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar {
+    width: 50%; 
+    height: auto
+}
+
+.quote {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+    background-color: gray;
+    border-radius: 1em;
+    text-align: center;
+    font-size: 1em;
+    padding: 1em 1em 1em 1em;
+    margin: 1em 0 1em 0;
+  }
+  
