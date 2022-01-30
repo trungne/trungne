@@ -50,11 +50,20 @@ function getOutlines() {
 }
 
 const outlineItemStyle = {
-    fontSize: "1em",
+    fontSize: "3em",
     transition: "font-size 300ms",
+    
     '&:hover': {
-        fontSize: "1.5em",
+        fontSize: "3.5em",
         opacity: [0.9, 0.8, 0.7],
+    },
+
+    "@media screen and (max-width: 760px)": {
+        fontSize: "1em",
+        '&:hover': {
+            fontSize: "1.5em",
+            opacity: [0.9, 0.8, 0.7],
+        },
     },
 }
 
@@ -65,13 +74,13 @@ function Outline() {
                 Hi!
             </Typography>
             <div className={styles.outlineItems}>
-                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="button">
+                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     About me
                 </Typography>
-                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="button">
+                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     Tech Stuff
                 </Typography>
-                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="button">
+                <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     Non-tech Stuff
                 </Typography>
             </div>
