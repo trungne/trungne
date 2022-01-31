@@ -1,0 +1,12 @@
+.about {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #0c0d1d;
+    padding: 1em 1em 1em 1em;
+}
+
+.text {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 5vmin;
+}

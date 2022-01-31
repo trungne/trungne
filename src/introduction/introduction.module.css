@@ -1,7 +1,8 @@
 .introduction {
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
     display: flex;
+    background-color: #101120;
 }
 
 .outline {
@@ -20,17 +21,18 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
+    
 }
 
 .outlineItem {
     color: whitesmoke;
-    text-align: center;
+    
     
 }
 
+
 .avatarContainer {
     width: 50%;
-    height: 100%;
     padding: 1em 1em 1em 1em;
     display: flex;
     flex-direction: column;
@@ -49,7 +51,7 @@
     background-color: gray;
     border-radius: 1em;
     text-align: center;
-    font-size: 1em;
+    font-size: 3vmin;
     padding: 1em 1em 1em 1em;
     margin: 1em 0 1em 0;
   }

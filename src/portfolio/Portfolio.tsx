@@ -1,5 +1,8 @@
+import styles from "./portfolio.module.css"
 export default function Portfolio() {
     return (
-        <p>Portfolio</p>
+        <div id="tech" className={styles.portfolio}>
+
+        </div>
     )
 }

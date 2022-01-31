@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import myAvatar from "./static/avatar.png";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { Link } from "@mui/material";
 
 function MyAvatar() {
     return (
@@ -22,38 +23,51 @@ function MyAvatar() {
 }
 
 const outlineItemStyle = {
-    fontSize: "3em",
+    fontSize: "5.5vmin",
     transition: "font-size 300ms",
-    
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "1em",
     '&:hover': {
-        fontSize: "3.5em",
+        fontSize: "6vmin",
         opacity: [0.9, 0.8, 0.7],
     },
 
-    "@media screen and (max-width: 760px)": {
-        fontSize: "1em",
-        '&:hover': {
-            fontSize: "1.5em",
-            opacity: [0.9, 0.8, 0.7],
-        },
-    },
+    // "@media screen and (max-width: 800px)": {
+    //     fontSize: "1em",
+    //     '&:hover': {
+    //         fontSize: "1.5em",
+    //         opacity: [0.9, 0.8, 0.7],
+    //     },
+    // },
 }
 
 function Outline() {
     return (
         <Box className={styles.outline} sx={{ width: 0.5 }}>
-            <Typography sx={{marginBottom: "1em"}} className={styles.outlineHeader} variant="h2">
+            <Typography sx={{ marginBottom: "1em" }} className={styles.outlineHeader} variant="h2">
                 Hi!
             </Typography>
             <div className={styles.outlineItems}>
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
+                    🧑
+                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#about">
                     About me
+                    </Link>
+
                 </Typography>
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
-                    Tech Stuff
+                    👨‍💻
+                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#tech">
+                    Work
+                    </Link>
+
                 </Typography>
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
-                    Non-tech Stuff
+                    🔎
+                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#non-tech">
+                    Non-tech
+                    </Link>
                 </Typography>
             </div>
 
@@ -63,9 +77,9 @@ function Outline() {
 
 export default function Introduction() {
     return (
-        <Box className={styles.introduction}>
+        <div id="introduction" className={styles.introduction}>
             <MyAvatar />
             <Outline />
-        </Box>
+        </div>
     )
 }
