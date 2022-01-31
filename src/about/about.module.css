@@ -1,12 +1,56 @@
 .about {
-    min-width: 100%;
+    max-width: 100%;
     min-height: 100%;
     background-color: #0c0d1d;
     padding: 1em 1em 1em 1em;
+    overflow: hidden;
+
 }
 
 .text {
     color: whitesmoke;
     text-align: center;
     font-size: 5vmin;
+}
+
+.header {
+    display: flex;
+    max-width: 100%;
+    margin-bottom: 1em;
+}
+
+
+.headerText {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    max-width: 70%;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 5em;
+}
+
+.headerPictureContainer {
+    max-width: 30%;
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 5em;
+}
+
+
+.headerPicture {
+    width: 100%;
+    border-radius: 15px;
+
+}
+
+@media screen and (max-width: 900px) {
+    .header{
+        flex-direction: column;
+        align-items: center;
+    }
+    .headerPictureContainer {
+        max-width: 50%;
+    }
 }
