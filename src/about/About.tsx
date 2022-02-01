@@ -91,7 +91,7 @@ function Experience() {
 function ProgrammingLanguages() {
     return (
         <div className={styles.techContainer}>
-            <Typography variant="h6" className={styles.aboutText}>
+            <Typography variant="h4" className={styles.aboutText}>
                 Languages I'm familiar with
             </Typography>
             <div>
@@ -115,7 +115,7 @@ function ProgrammingLanguages() {
 function Technologies() {
     return (
         <div className={styles.techContainer}>
-            <Typography variant="h6" className={styles.aboutText}>
+            <Typography variant="h4" className={styles.aboutText}>
                 Technologies I can use
             </Typography>
             <div>
