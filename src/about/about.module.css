@@ -26,8 +26,8 @@
     align-items: center;
     max-width: 70%;
     color: whitesmoke;
-    text-align: center;
     font-size: 5em;
+    margin: 1rem 1rem 1rem 1rem;
 }
 
 .headerPictureContainer {
@@ -45,6 +45,51 @@
 
 }
 
+
+
+.aboutTextContainer {
+    max-width: 100%;
+    display: flex;
+    padding: 1em 1em 1em 1em;
+    gap: 1em;
+}
+
+.aboutText {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.chip  {
+    background-color: whitesmoke !important;
+    margin: 1em 0 1em 0;
+    font-weight: 800;
+    
+    padding: 0.5em 0 0.5em 0 !important;
+    font-size: 1.2em !important;
+    height: auto !important;
+}
+
+
+.divider {
+    background-color: whitesmoke;
+}
+
+.techContainer {
+    width: 50%;
+
+}
+
+
+.star {
+    color: rgb(253, 253, 96);
+}
+
+.starContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 900px) {
     .header{
         flex-direction: column;
@@ -53,4 +98,23 @@
     .headerPictureContainer {
         max-width: 50%;
     }
+    .headerText {
+        max-width: 100%;
+    }
+
+    .aboutTextContainer {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .techContainer {
+        width: 100%;
+    }
+
+    .chip {
+        font-size: 1em !important;
+
+    }
+
+    
 }
