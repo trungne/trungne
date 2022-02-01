@@ -24,7 +24,7 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 function TechAndConfidentLevel(props: { icon: string, name: string, confidentLevel: Star }) {
     return (
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between"}}>
+        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
             <Chip className={styles.chip} label={props.name}
                 avatar={<Avatar src={props.icon} />} />
 
@@ -38,30 +38,97 @@ function TechAndConfidentLevel(props: { icon: string, name: string, confidentLev
 type Star = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5
 function ConfidentLevel(props: { level: Star }) {
     const fullStarNum: number = Math.floor(props.level);
-    const arr: number[] = [];
+    let stars: JSX.Element[] = [];
 
     for (let i = 0; i < fullStarNum; i++) {
-        arr.push(i);
+        stars.push(<StarIcon className={styles.star} />);
     }
-
-    const fullStars = arr.map((number) => { return <StarIcon className={styles.star} /> })
 
     if (fullStarNum !== props.level) {
-        fullStars.push(<StarHalfIcon className={styles.star} />);
+        stars.push(<StarHalfIcon className={styles.star} />);
     }
 
-    const nonStarNum = Math.floor(5 - props.level);
-    const arr2: number[] = []
-    for (let i = 0; i < nonStarNum; i++) {
-        arr2.push(i);
+    const emptyStarNum = Math.floor(5 - props.level);
+    let emptyStars: JSX.Element[] = [];
+    for (let i = 0; i < emptyStarNum; i++) {
+        emptyStars.push(<StarOutlineIcon className={styles.star} />)
     }
 
-    const nonStars = arr2.map((number) => { return <StarOutlineIcon className={styles.star} /> })
-
-    const stars = fullStars.concat(nonStars);
     return (
         <div className={styles.starContainer}>
-            {stars}
+            {stars.concat(emptyStars)}
+        </div>
+    );
+}
+
+function Header() {
+    return (
+        <div className={styles.header} >
+            <div className={styles.headerPictureContainer}>
+                <img className={styles.headerPicture} src={profilePicture} alt="profile" />
+            </div>
+            <div className={styles.headerText}>
+                <Typography variant="h4">
+                    My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm aspired to become a web and mobile app developer.
+                </Typography>
+            </div>
+        </div>
+    );
+}
+
+
+
+function Experience() {
+    return (
+        <div className={styles.aboutTextContainer}>
+            <ProgrammingLanguages />
+            <Divider className={styles.divider} orientation="vertical" flexItem />
+            <Technologies />
+        </div>
+    );
+}
+
+function ProgrammingLanguages() {
+    return (
+        <div className={styles.techContainer}>
+            <Typography variant="h6" className={styles.aboutText}>
+                Languages I'm familiar with
+            </Typography>
+            <div>
+                <TechAndConfidentLevel name="HTML5" icon={htmlIcon} confidentLevel={5} />
+
+                <TechAndConfidentLevel name="CSS3" icon={cssIcon} confidentLevel={4.5} />
+
+                <TechAndConfidentLevel name="JavaScript" icon={jsIcon} confidentLevel={4} />
+
+                <TechAndConfidentLevel name="TypeScript" icon={tsIcon} confidentLevel={4} />
+
+                <TechAndConfidentLevel name="Java" icon={javaIcon} confidentLevel={4} />
+
+                <TechAndConfidentLevel name="Python" icon={pythonIcon} confidentLevel={3} />
+
+            </div>
+        </div>
+    )
+}
+
+function Technologies() {
+    return (
+        <div className={styles.techContainer}>
+            <Typography variant="h6" className={styles.aboutText}>
+                Technologies I can use
+            </Typography>
+            <div>
+                <TechAndConfidentLevel name="Git" icon={gitIcon} confidentLevel={3} />
+
+                <TechAndConfidentLevel name="ReactJS" icon={reactIcon} confidentLevel={2.5} />
+
+                <TechAndConfidentLevel name="Angular" icon={angularIcon} confidentLevel={2} />
+
+                <TechAndConfidentLevel name="Android Studio" icon={androidStudioIcon} confidentLevel={4} />
+
+                <TechAndConfidentLevel name="Firebase" icon={firebaseIcon} confidentLevel={3} />
+            </div>
         </div>
     );
 }
@@ -69,66 +136,9 @@ function ConfidentLevel(props: { level: Star }) {
 export default function About() {
     return (
         <div id="about" className={styles.about}>
-            <div className={styles.header} >
-
-                <div className={styles.headerPictureContainer}>
-                    <img className={styles.headerPicture} src={profilePicture} alt="profile" />
-                </div>
-                <div className={styles.headerText}>
-                    <Typography variant="h4">
-                        My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm aspired to become a web and mobile app developer.
-                    </Typography>
-                </div>
-            </div>
+            <Header />
             <Divider className={styles.divider} light />
-
-            <div className={styles.aboutTextContainer}>
-                <div className={styles.techContainer}>
-                    <Typography variant="h6" className={styles.aboutText}>
-                        Languages I'm familiar with
-                    </Typography>
-                    <div>
-                        <TechAndConfidentLevel name="HTML5" icon={htmlIcon} confidentLevel={5} />
-
-                        <TechAndConfidentLevel name="CSS3" icon={cssIcon} confidentLevel={4.5} />
-
-                        <TechAndConfidentLevel name="JavaScript" icon={jsIcon} confidentLevel={4} />
-
-                        <TechAndConfidentLevel name="TypeScript" icon={tsIcon} confidentLevel={4} />
-
-                        <TechAndConfidentLevel name="Java" icon={javaIcon} confidentLevel={4} />
-
-                        <TechAndConfidentLevel name="Python" icon={pythonIcon} confidentLevel={3} />
-
-                    </div>
-                </div>
-
-                <Divider className={styles.divider} orientation="vertical" flexItem />
-
-                <div className={styles.techContainer}>
-                    <Typography variant="h6" className={styles.aboutText}>
-                        Technologies I can use
-                    </Typography>
-                    <div>
-                        <TechAndConfidentLevel name="Git" icon={gitIcon} confidentLevel={3} />
-
-                        <TechAndConfidentLevel name="ReactJS" icon={reactIcon} confidentLevel={2.5} />
-
-                        <TechAndConfidentLevel name="Angular" icon={angularIcon} confidentLevel={2} />
-
-                        <TechAndConfidentLevel name="Android Studio" icon={androidStudioIcon} confidentLevel={4} />
-
-                        <TechAndConfidentLevel name="Firebase" icon={firebaseIcon} confidentLevel={3} />
-                    </div>
-                </div>
-            </div>
-
-            <Divider className={styles.divider} flexItem />
-
-            <Typography variant="h6" className={styles.aboutText}>
-                Experience
-            </Typography>
-
+            <Experience />
         </div>
     )
 }
