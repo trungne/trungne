@@ -21,7 +21,6 @@ import firebaseIcon from "./static/firebase.png";
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { useEffect, useState } from "react";
 
 function TechAndConfidentLevel(props: { icon: string, name: string, confidentLevel: Star }) {
     return (

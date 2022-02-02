@@ -24,22 +24,14 @@ function MyAvatar() {
 
 const outlineItemStyle = {
     fontSize: "5.5vmin",
-    transition: "font-size 300ms",
+    transition: "padding 300ms",
     display: "flex",
     justifyContent: "space-between",
     gap: "1em",
     '&:hover': {
-        fontSize: "6vmin",
+        padding: ["0.1em", 0, "0.1em", 0],
         opacity: [0.9, 0.8, 0.7],
     },
-
-    // "@media screen and (max-width: 800px)": {
-    //     fontSize: "1em",
-    //     '&:hover': {
-    //         fontSize: "1.5em",
-    //         opacity: [0.9, 0.8, 0.7],
-    //     },
-    // },
 }
 
 function Outline() {
@@ -52,21 +44,21 @@ function Outline() {
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     🧑
                     <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#about">
-                    About me
+                        About me
                     </Link>
 
                 </Typography>
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     👨‍💻
                     <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#tech">
-                    Work
+                        My Projects
                     </Link>
 
                 </Typography>
                 <Typography sx={outlineItemStyle} className={styles.outlineItem} variant="subtitle1">
                     🔎
                     <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#non-tech">
-                    Non-tech
+                        Non-tech
                     </Link>
                 </Typography>
             </div>

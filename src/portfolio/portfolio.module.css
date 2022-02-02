@@ -1,9 +1,8 @@
 .portfolio {
-    
     width: 100%;
     min-height: 100%;
     background-color: #090a1b;
-    padding: 1em 1em 1em 1em;
+    
 }
 
 
@@ -14,7 +13,10 @@
 }
 
 .header {
-    width: 100%
+    width: 100%;
+    height: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .imageContainer {

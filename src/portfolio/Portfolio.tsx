@@ -55,7 +55,7 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: "90%", flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
@@ -135,7 +135,7 @@ function Header() {
     return (
         <div className={styles.header}>
             <Typography variant="h4" className={styles.text}>
-                Projects I have completed
+                My projects
             </Typography>
         </div>
     )

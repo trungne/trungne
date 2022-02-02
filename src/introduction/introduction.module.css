@@ -19,6 +19,7 @@
 
 .outlineItems {
     display: flex;
+    height: auto;
     flex-direction: column;
     gap: 2em;
     
