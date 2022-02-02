@@ -21,6 +21,7 @@ import firebaseIcon from "./static/firebase.png";
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import { useEffect, useState } from "react";
 
 function TechAndConfidentLevel(props: { icon: string, name: string, confidentLevel: Star }) {
     return (
@@ -69,7 +70,7 @@ function Header() {
             </div>
             <div className={styles.headerText}>
                 <Typography variant="h4">
-                    My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm aspired to become a web and mobile app developer.
+                    My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm at an early stage of becoming a web and mobile app developer. I'm eager to learn new things and  work in a team.
                 </Typography>
             </div>
         </div>
@@ -82,7 +83,7 @@ function Experience() {
     return (
         <div className={styles.aboutTextContainer}>
             <ProgrammingLanguages />
-            <Divider className={styles.divider} orientation="vertical" flexItem />
+            <Divider className={styles.divider + " " + styles.horizontalDivider} orientation="vertical" flexItem />
             <Technologies />
         </div>
     );
