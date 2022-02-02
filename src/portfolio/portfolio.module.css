@@ -5,7 +5,6 @@
     
 }
 
-
 .text {
     color: whitesmoke;
     text-align: center;
@@ -19,24 +18,14 @@
     padding-bottom: 1em;
 }
 
-.imageContainer {
-    
-}
-
-.image {
-    width: 100%;
-}
-
-.imageDescription {
-    color: whitesmoke;
-    text-align: center;
-    
-}
-
 .center {
-    width: 100%;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.projectCard {
+    text-align: center;
+
+    flex-basis: 200px;
 }
