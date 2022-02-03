@@ -41,17 +41,17 @@ function ConfidentLevel(props: { level: Star }) {
     let stars: JSX.Element[] = [];
 
     for (let i = 0; i < fullStarNum; i++) {
-        stars.push(<StarIcon className={styles.star} />);
+        stars.push(<StarIcon key={i} className={styles.star} />);
     }
 
     if (fullStarNum !== props.level) {
-        stars.push(<StarHalfIcon className={styles.star} />);
+        stars.push(<StarHalfIcon key={fullStarNum + 1} className={styles.star} />);
     }
 
     const emptyStarNum = Math.floor(5 - props.level);
     let emptyStars: JSX.Element[] = [];
     for (let i = 0; i < emptyStarNum; i++) {
-        emptyStars.push(<StarOutlineIcon className={styles.star} />)
+        emptyStars.push(<StarOutlineIcon key={fullStarNum + 2 + i} className={styles.star} />)
     }
 
     return (
@@ -69,7 +69,7 @@ function Header() {
             </div>
             <div className={styles.headerText}>
                 <Typography variant="h4">
-                    My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm at an early stage of becoming a web and mobile app developer. I'm eager to learn new things and  work in a team.
+                    My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm at an early stage of becoming a web and mobile app developer. I'm eager to learn and keen on working in a team.
                 </Typography>
             </div>
         </div>
