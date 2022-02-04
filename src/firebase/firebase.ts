@@ -2,8 +2,8 @@ import {FirebaseApp, initializeApp} from 'firebase/app';
 import { FirebaseOptions } from 'firebase/app';
 import { Firestore, getFirestore } from "firebase/firestore"
 
-import { collection, query, where, getDocs } from "firebase/firestore";
-import Project from '../portfolio/Project';
+import { collection, query, getDocs } from "firebase/firestore";
+import ProjectPreview from '../portfolio/Project';
 
 const config: FirebaseOptions = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -26,7 +26,7 @@ class Firebase {
     async getProjects(){
       const q = query(collection(this.db, "projects"));
       const querySnapshot = await getDocs(q);
-      const projects: Project[] = [];
+      const projects: ProjectPreview[] = [];
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         projects.push({name: doc.get("name"), description: doc.get("description")});

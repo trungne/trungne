@@ -9,14 +9,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 
-
+import ProjectPreview from "./Project";
 
 import seedImage from './static/seed.png';
 import leafImage from './static/leaf.png';
 import flowerImage from './static/flower.png';
 import fruitImage from './static/fruit.png';
 import FirebaseContext from "../firebase/context";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const images: Image[] = [
   {
@@ -83,41 +83,28 @@ const projectsBoxStyle = {
   gap: "1em",
   marginBottom: "1em",
 }
-function Projects() {
-  // TODO: useState here to force rerender when finish getting data
-  const [v, setVar] = useState(0);
-  return (
-    <FirebaseContext.Consumer>
-      {/* {async (firebase) => {
-        const projects = await firebase?.getProjects();
-        if (projects == null || projects.length === 0) {
-          return null;
+
+function Projects(){
+  const firebaseContext = useContext(FirebaseContext);
+  const [projects, setProjects] = useState<ProjectPreview[]>([]);
+
+  useEffect(() => {
+    if (firebaseContext){
+      firebaseContext.getProjects().then(
+        projects => {
+          setProjects(projects);
         }
+      )
+    }
+  }, []) // only run once
 
-        return (<Box sx={projectsBoxStyle}>
-          {projects.map((project, index) => {
-            console.log(project);
-            return (<ProjectCard key={index} name={project.name} description={project.description} />);
-          })}
-
-        </Box>)
-      }} */}
-
-      {firebase => {
-        firebase?.getProjects().then(result => {
-          setVar(1);
-          const projects = result;
-          return (<Box sx={projectsBoxStyle}>
-            {projects.map((project, index) => {
-              return (<ProjectCard key={index} name={project.name} description={project.description} />);
-            })}
-          </Box>)
-        });
-        return null;
-      }}
-    </FirebaseContext.Consumer>
-  )
+  return (<Box sx={projectsBoxStyle}>
+    {projects.map((project, index) => {
+      return (<ProjectCard key={index} name={project.name} description={project.description} />);
+    })}
+  </Box>)
 }
+
 
 function ProjectShowCase() {
   return (

@@ -1,5 +1,4 @@
-export default interface Project {
+export default interface ProjectPreview {
     name: string;
     description: string;
-    
 }
