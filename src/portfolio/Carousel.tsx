@@ -1,6 +1,5 @@
-import styles from "./portfolio.module.css"
-import Image from "./Image"
-import { useState } from "react";
+import styles from "./portfolio.module.css";
+import { useEffect, useState } from "react";
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -11,13 +10,18 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import Image from "./Image";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+// const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 export default function Carousel(props: { images: Image[] }) {
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = props.images.length;
+
+    useEffect(() => {
+        setActiveStep(0);
+    }, [props.images])
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -32,7 +36,7 @@ export default function Carousel(props: { images: Image[] }) {
     };
 
     return (
-        <Box sx={{ maxWidth: 400, flexGrow: 1}}>
+        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
             <Paper
                 square
                 elevation={0}
@@ -46,32 +50,32 @@ export default function Carousel(props: { images: Image[] }) {
             >
                 <Typography className={styles.imageDescription}>{props.images[activeStep].label}</Typography>
             </Paper>
-            <AutoPlaySwipeableViews
+            <SwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                 index={activeStep}
                 onChangeIndex={handleStepChange}
                 enableMouseEvents
             >
-                {props.images.map((step, index) => (
-                    <div key={step.label}>
+                {props.images.map((image, index) => (
+                    <div key={index}>
                         {Math.abs(activeStep - index) <= 2 ? (
                             <Box
                                 component="img"
                                 sx={{
-                                    height: "50%",
+
                                     display: 'block',
                                     maxWidth: '100%',
                                     width: '100%',
                                     overflow: 'hidden',
-                                    
+
                                 }}
-                                src={step.imgPath}
-                                alt={step.label}
+                                src={image.imgPath}
+                                alt={image.label}
                             />
                         ) : null}
                     </div>
                 ))}
-            </AutoPlaySwipeableViews>
+            </SwipeableViews>
             <MobileStepper
                 sx={{ backgroundColor: "white" }}
                 steps={maxSteps}

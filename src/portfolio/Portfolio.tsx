@@ -1,6 +1,5 @@
 import styles from "./portfolio.module.css"
 import Typography from "@mui/material/Typography"
-import Image from "./Image"
 import Carousel from "./Carousel";
 import Box from '@mui/material/Box';
 
@@ -11,33 +10,9 @@ import { CardActionArea } from '@mui/material';
 
 import ProjectPreview from "./Project";
 
-import seedImage from './static/seed.png';
-import leafImage from './static/leaf.png';
-import flowerImage from './static/flower.png';
-import fruitImage from './static/fruit.png';
 import FirebaseContext from "../firebase/context";
 import { useContext, useEffect, useState } from "react";
-
-const images: Image[] = [
-  {
-    label: 'Seed',
-    imgPath: seedImage
-  },
-  {
-    label: 'Leaf',
-    imgPath: leafImage
-  },
-  {
-    label: 'flower',
-    imgPath: flowerImage
-  },
-  {
-    label: 'Fruit',
-    imgPath: fruitImage
-  },
-];
-
-
+import Image from "./Image";
 
 function Header() {
   return (
@@ -49,18 +24,10 @@ function Header() {
   )
 }
 
-// const projects = [
-//   { name: "Color Picker", description: "A website for choosing colors for draps" },
-//   { name: "HelpFightCovid", description: "A mobile app for creating and registering testing sites" },
-//   { name: "fITech", description: "A mobile app that helps manage workout schedule" },
-//   { name: "English Garden", description: "A website that provides information about English courses" }
-// ]
-
-
-function ProjectCard(props: { name: string, description: string }) {
+function ProjectCard(props: { index: number, name: string, description: string, onProjectSelected: (i: number) => void }) {
   return (
     <Card className={styles.projectCard}>
-      <CardActionArea sx={{ height: "100%" }}>
+      <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
         <CardMedia component="img" alt={props.description} />
         <CardContent>
           <Typography>
@@ -84,35 +51,40 @@ const projectsBoxStyle = {
   marginBottom: "1em",
 }
 
-function Projects(){
+
+function ProjectShowCase() {
   const firebaseContext = useContext(FirebaseContext);
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
-
+  const [previews, setPreviews] = useState<Image[]>([]);
+  const handleProjectSelected = (index: number) => {
+    setPreviews(projects[index].previews);
+  }
   useEffect(() => {
-    if (firebaseContext){
+    if (firebaseContext) {
       firebaseContext.getProjects().then(
         projects => {
           setProjects(projects);
         }
       )
     }
-  }, []) // only run once
+  }, [firebaseContext]) // only run once
 
-  return (<Box sx={projectsBoxStyle}>
-    {projects.map((project, index) => {
-      return (<ProjectCard key={index} name={project.name} description={project.description} />);
-    })}
-  </Box>)
-}
-
-
-function ProjectShowCase() {
   return (
     <div>
-      <Projects />
+      <Box sx={projectsBoxStyle}>
+        {projects.map((project, index) => {
+          return (<ProjectCard onProjectSelected={handleProjectSelected} 
+            key={index} 
+            index={index} 
+            name={project.name} 
+            description={project.description} />);
+        })}
+      </Box>
 
       <div className={styles.center}>
-        <Carousel images={images} />
+        {previews.length > 0 &&
+          <Carousel images={previews} />
+        }
       </div>
     </div>
 
