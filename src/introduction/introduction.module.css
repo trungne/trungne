@@ -3,42 +3,44 @@
     min-height: 100%;
     display: flex;
     background-color: #101120;
+    flex-wrap: wrap;
 }
 
 .outline {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 400px;
+    flex-grow: 1;
 }
 
-.outlineHeader {
+.outline-header {
     color: whitesmoke;
     text-align: center;
 }
 
-.outlineItems {
+.outline-items {
     display: flex;
     height: auto;
     flex-direction: column;
     gap: 2em;
-    
 }
 
-.outlineItem {
-    color: whitesmoke;
-    
-    
-}
-
-
-.avatarContainer {
-    width: 50%;
-    padding: 1em 1em 1em 1em;
+.outline-item {
+    font-size: 5.5vmin !important;
+    transition: padding 300ms;
     display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.outline-item:hover {
+    opacity: 0.5;
+}
+
+.avatar-container {
+    flex-basis: 400px;
+    flex-grow: 1;
+    padding: 1em 1em 1em 1em;    
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .avatar {

@@ -1,4 +1,5 @@
-import styles from "./about.module.css"
+import styles from "./about.module.css";
+import globalStyles from "../global.module.css";
 import Typography from "@mui/material/Typography"
 import profilePicture from "./static/profile-pic.png";
 import Divider from "@mui/material/Divider";
@@ -38,7 +39,7 @@ function ConfidentLevel(props: { level: Star }) {
     }
 
     return (
-        <div className={styles.starContainer}>
+        <div className={globalStyles["center-flex"]}>
             {stars.concat(emptyStars)}
         </div>
     );
@@ -47,10 +48,10 @@ function ConfidentLevel(props: { level: Star }) {
 function Header() {
     return (
         <div className={styles.header} >
-            <div className={styles.headerPictureContainer}>
-                <img className={styles.headerPicture} src={profilePicture} alt="profile" />
+            <div className={styles["header-picture-container"]}>
+                <img className={styles["header-picture"]} src={profilePicture} alt="profile" />
             </div>
-            <div className={styles.headerText}>
+            <div className={styles["header-text"]}>
                 <Typography variant="h4">
                     My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm at an early stage of becoming a web and mobile app developer. I'm eager to learn and keen on working in a team.
                 </Typography>
@@ -63,7 +64,7 @@ function Header() {
 
 function Experience() {
     return (
-        <div className={styles.aboutTextContainer}>
+        <div className={styles["experience"]}>
             <ProgrammingLanguages />
             <Divider className={styles.divider + " " + styles.horizontalDivider} orientation="vertical" flexItem />
             <Technologies />
@@ -73,8 +74,8 @@ function Experience() {
 
 function ProgrammingLanguages() {
     return (
-        <div className={styles.techContainer}>
-            <Typography variant="h4" className={styles.aboutText}>
+        <div className={styles["tech-container"]}>
+            <Typography variant="h4" className={styles["technologies-header"]}>
                 Languages I'm familiar with
             </Typography>
             <div>
@@ -97,8 +98,8 @@ function ProgrammingLanguages() {
 
 function Technologies() {
     return (
-        <div className={styles.techContainer}>
-            <Typography variant="h4" className={styles.aboutText}>
+        <div className={styles["tech-container"]}>
+            <Typography variant="h4" className={styles["technologies-header"]}>
                 Technologies I can use
             </Typography>
             <div>
@@ -118,7 +119,7 @@ function Technologies() {
 
 export default function About() {
     return (
-        <div id="about" className={styles.about}>
+        <div id="about" className={styles["about"]}>
             <Header />
             <Divider className={styles.divider} light />
             <Experience />

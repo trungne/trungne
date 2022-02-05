@@ -1,4 +1,5 @@
 import styles from "./portfolio.module.css"
+import globalStyles from "../global.module.css"
 import Typography from "@mui/material/Typography"
 import Carousel from "./Carousel";
 import Box from '@mui/material/Box';
@@ -19,7 +20,7 @@ import chips from "../about/TechChip";
 
 function Header() {
   return (
-    <div className={styles.header}>
+    <div className={styles["header"]}>
       <Typography variant="h4" className={styles.text}>
         My Work
       </Typography>
@@ -34,7 +35,7 @@ function ProjectCard(props: {
   description: string, 
   onProjectSelected: (i: number) => void }) {
   return (
-    <Card className={styles.projectCard}>
+    <Card className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
         <CardMedia component="img" alt={props.description} />
         <CardContent>
@@ -52,7 +53,7 @@ function ProjectCard(props: {
 
 function MadeWith(props: { imageUrls: string[] }) {
   return (
-    <div className={styles.madeWith}>
+    <div className={globalStyles["center-flex"] + " " + styles["made-with"]}>
       <Typography variant="subtitle2" sx={{ color: "whitesmoke" }}>
         Made with
       </Typography>
@@ -109,7 +110,7 @@ function ProjectShowCase() {
         : <Skeleton variant="rectangular" sx={{ backgroundColor: "gray" }} width={"100%"} height={200} />
       }
 
-      <div className={styles.center}>
+      <div className={globalStyles["center-flex"]}>
         {currentProjectIndex !== -1 && <Carousel images={projects[currentProjectIndex].previews} />
         }
       </div>
