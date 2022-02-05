@@ -24,3 +24,11 @@
 .made-with{
     flex-direction: column;
 }
+
+.github-link {
+    width: 100%;
+}
+
+.github-icon {
+    width: 5em;
+}

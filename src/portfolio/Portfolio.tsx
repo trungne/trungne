@@ -8,32 +8,32 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-
 import ProjectPreview from "./Project";
 
 import FirebaseContext from "../firebase/context";
 import { useContext, useEffect, useState } from "react";
-
+import githubIcon from "./static/github.png";
 import chips from "../about/TechChip";
-
+import { nanoid } from "nanoid";
 
 
 function Header() {
   return (
     <div className={styles["header"]}>
-      <Typography variant="h4" className={styles.text}>
+      <Typography variant="h2" className={styles["text"]}>
         My Work
       </Typography>
     </div>
   )
 }
 
-function ProjectCard(props: { 
+function ProjectCard(props: {
   index: number,
   thumbnail: string,
-  name: string, 
-  description: string, 
-  onProjectSelected: (i: number) => void }) {
+  name: string,
+  description: string,
+  onProjectSelected: (i: number) => void
+}) {
   return (
     <Card className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
@@ -59,7 +59,7 @@ function MadeWith(props: { imageUrls: string[] }) {
       </Typography>
       <Box display={"flex"} gap={"1em"}>
         {props.imageUrls.map(url => {
-          return chips[url]
+          return <div key={nanoid()}> {chips[url]} </div>;
         })}
       </Box>
     </div>
@@ -116,6 +116,14 @@ function ProjectShowCase() {
       </div>
 
       {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
+
+      <div className={globalStyles["center-flex"] + " " + styles["github-link"]}>
+        <a href={currentProjectIndex !== -1 ? projects[currentProjectIndex].githubLink : "/" }>
+          <img className={styles["github-icon"]} alt="github link" src={githubIcon} />
+        </a>
+
+      </div>
+
     </div>
   )
 }
@@ -123,7 +131,7 @@ function ProjectShowCase() {
 
 export default function Portfolio() {
   return (
-    <div id="tech" className={styles.portfolio}>
+    <div id="my-work" className={styles.portfolio}>
       <Header />
       <ProjectShowCase />
     </div>

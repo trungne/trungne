@@ -34,8 +34,8 @@ function Outline() {
                 </Typography>
                 <Typography className={globalStyles["white-text"] + " " + styles["outline-item"]}variant="subtitle1">
                     👨‍💻
-                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#tech">
-                        My Projects
+                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#my-work">
+                        My Work
                     </Link>
 
                 </Typography>

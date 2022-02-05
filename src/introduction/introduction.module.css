@@ -44,8 +44,8 @@
 }
 
 .avatar {
-    width: 50%; 
-    height: auto
+    width: 50% !important; 
+    height: auto !important;
 }
 
 .quote {

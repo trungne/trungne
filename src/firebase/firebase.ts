@@ -41,6 +41,7 @@ class Firebase {
         description: doc.get("description"),
         madeWith: doc.get("made_with"),
         thumbnail: doc.get("thumbnail"),
+        githubLink: doc.get("github_link"),
         previews: images
       });
     });
