@@ -12,7 +12,6 @@ import ProjectPreview from "./Project";
 
 import FirebaseContext from "../firebase/context";
 import { useContext, useEffect, useState } from "react";
-import Image from "./Image";
 
 import chips from "../about/TechChip";
 
@@ -48,11 +47,16 @@ function ProjectCard(props: { index: number, name: string, description: string, 
 
 function MadeWith(props: { imageUrls: string[] }) {
   return (
-    <Box display={"flex"} gap={"1em"}>
-      {props.imageUrls.map(url => {
-        return chips[url]
-      })}
-    </Box>
+    <div>
+      <Typography variant="subtitle2" sx={{ color: "whitesmoke" }}>
+        Made with
+      </Typography>
+      <Box display={"flex"} gap={"1em"}>
+        {props.imageUrls.map(url => {
+          return chips[url]
+        })}
+      </Box>
+    </div>
   )
 }
 
@@ -67,12 +71,10 @@ const projectsBoxStyle = {
 function ProjectShowCase() {
   const firebaseContext = useContext(FirebaseContext);
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
-  const [previews, setPreviews] = useState<Image[]>([]);
-  const [madeWith, setMadeWith] = useState<string[]>([]);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(-1);
 
   const handleProjectSelected = (index: number) => {
-    setPreviews(projects[index].previews);
-    setMadeWith(projects[index].madeWith);
+    setCurrentProjectIndex(index);
   }
 
   useEffect(() => {
@@ -80,8 +82,7 @@ function ProjectShowCase() {
       firebaseContext.getProjects().then(
         projects => {
           setProjects(projects);
-          setPreviews(projects[0].previews);
-          setMadeWith(projects[0].madeWith);
+          setCurrentProjectIndex(0);
         }
       )
     }
@@ -103,14 +104,12 @@ function ProjectShowCase() {
       }
 
       <div className={styles.center}>
-        {previews.length > 0 && <Carousel images={previews} />
+        {currentProjectIndex !== -1 && <Carousel images={projects[currentProjectIndex].previews} />
         }
       </div>
+
       <div className={styles["made-with"]}>
-        <Typography variant="subtitle2" sx={{color: "whitesmoke"}}>
-          Made with
-        </Typography>
-        {madeWith.length > 0 && <MadeWith imageUrls={madeWith} />}
+        {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
       </div>
 
     </div>
