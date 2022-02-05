@@ -35,9 +35,11 @@ class Firebase {
       previewImagePaths.forEach((path, index) => {
         images.push({imgPath: path, label: previewDescription[index]});
       })
+
       projects.push({
         name: doc.get("name"),
         description: doc.get("description"),
+        madeWith: doc.get("made_with"),
         previews: images
       });
     });

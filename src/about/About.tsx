@@ -2,38 +2,21 @@ import styles from "./about.module.css"
 import Typography from "@mui/material/Typography"
 import profilePicture from "./static/profile-pic.png";
 import Divider from "@mui/material/Divider";
-import Chip from '@mui/material/Chip';
-import Avatar from "@mui/material/Avatar";
-
-import gitIcon from "./static/git.png";
-import htmlIcon from "./static/html5.png";
-import cssIcon from "./static/css.png";
-import jsIcon from "./static/js.png";
-import tsIcon from "./static/ts.png";
-import javaIcon from "./static/java.png";
-import pythonIcon from "./static/python.png";
-
-import reactIcon from "./static/react.png";
-import angularIcon from "./static/angular.png";
-import androidStudioIcon from "./static/androidstudio.png";
-import firebaseIcon from "./static/firebase.png";
 
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-function TechAndConfidentLevel(props: { icon: string, name: string, confidentLevel: Star }) {
+import chips from "./TechChip";
+
+function TechAndConfidentLevel(props: { chip: JSX.Element, confidentLevel: Star }) {
     return (
         <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-            <Chip className={styles.chip} label={props.name}
-                avatar={<Avatar src={props.icon} />} />
-
+            {props.chip}
             <ConfidentLevel level={props.confidentLevel} />
-
         </div>
     )
 }
-
 
 type Star = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5
 function ConfidentLevel(props: { level: Star }) {
@@ -95,17 +78,17 @@ function ProgrammingLanguages() {
                 Languages I'm familiar with
             </Typography>
             <div>
-                <TechAndConfidentLevel name="HTML5" icon={htmlIcon} confidentLevel={5} />
+                <TechAndConfidentLevel chip={chips.html} confidentLevel={5} />
 
-                <TechAndConfidentLevel name="CSS3" icon={cssIcon} confidentLevel={4.5} />
+                <TechAndConfidentLevel chip={chips.css} confidentLevel={4.5} />
 
-                <TechAndConfidentLevel name="JavaScript" icon={jsIcon} confidentLevel={4} />
+                <TechAndConfidentLevel chip={chips.javascript} confidentLevel={4} />
 
-                <TechAndConfidentLevel name="TypeScript" icon={tsIcon} confidentLevel={4} />
+                <TechAndConfidentLevel chip={chips.typescript} confidentLevel={4} />
 
-                <TechAndConfidentLevel name="Java" icon={javaIcon} confidentLevel={4} />
+                <TechAndConfidentLevel chip={chips.java} confidentLevel={4} />
 
-                <TechAndConfidentLevel name="Python" icon={pythonIcon} confidentLevel={3} />
+                <TechAndConfidentLevel chip={chips.python} confidentLevel={3} />
 
             </div>
         </div>
@@ -119,15 +102,15 @@ function Technologies() {
                 Technologies I can use
             </Typography>
             <div>
-                <TechAndConfidentLevel name="Git" icon={gitIcon} confidentLevel={3} />
+                <TechAndConfidentLevel chip={chips.git} confidentLevel={3} />
 
-                <TechAndConfidentLevel name="ReactJS" icon={reactIcon} confidentLevel={2.5} />
+                <TechAndConfidentLevel chip={chips.react} confidentLevel={2.5} />
 
-                <TechAndConfidentLevel name="Angular" icon={angularIcon} confidentLevel={2} />
+                <TechAndConfidentLevel chip={chips.angular} confidentLevel={2} />
 
-                <TechAndConfidentLevel name="Android Studio" icon={androidStudioIcon} confidentLevel={4} />
+                <TechAndConfidentLevel chip={chips.androidstudio} confidentLevel={4} />
 
-                <TechAndConfidentLevel name="Firebase" icon={firebaseIcon} confidentLevel={3} />
+                <TechAndConfidentLevel chip={chips.firebase} confidentLevel={3} />
             </div>
         </div>
     );

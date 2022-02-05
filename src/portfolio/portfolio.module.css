@@ -1,14 +1,17 @@
 .portfolio {
     width: 100%;
-    min-height: 100%;
     background-color: #090a1b;
-    
 }
 
 .text {
     color: whitesmoke;
     text-align: center;
     font-size: 5vmin;
+}
+
+.placeholderText {
+    color: whitesmoke;
+    font-style: italic;
 }
 
 .header {
@@ -28,4 +31,11 @@
     text-align: center;
 
     flex-basis: 200px;
+}
+
+.made-with{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -9,11 +9,14 @@ import Typography from "@mui/material/Typography"
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
 import Image from "./Image";
 
-// const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
+const boxStyle = {
+    maxWidth: 400, 
+    flexGrow: 1,
+    marginTop: "1em",
+    marginBottom: "1em",
+}
 export default function Carousel(props: { images: Image[] }) {
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
@@ -36,7 +39,7 @@ export default function Carousel(props: { images: Image[] }) {
     };
 
     return (
-        <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+        <Box sx={boxStyle}>
             <Paper
                 square
                 elevation={0}
