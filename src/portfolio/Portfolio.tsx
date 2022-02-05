@@ -9,14 +9,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import ProjectPreview from "./Project";
-
+import Avatar from "@mui/material/Avatar";
 import FirebaseContext from "../firebase/context";
 import { useContext, useEffect, useState } from "react";
 import githubIcon from "./static/github.png";
 import chips from "../about/TechChip";
 import { nanoid } from "nanoid";
-
-
+import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 function Header() {
   return (
     <div className={styles["header"]}>
@@ -117,14 +116,24 @@ function ProjectShowCase() {
 
       {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
 
-      <div className={globalStyles["center-flex"] + " " + styles["github-link"]}>
-        <a href={currentProjectIndex !== -1 ? projects[currentProjectIndex].githubLink : "/" }>
-          <img className={styles["github-icon"]} alt="github link" src={githubIcon} />
-        </a>
-
-      </div>
+      {currentProjectIndex !== -1 && <ExternalLink 
+        githubLink={projects[currentProjectIndex].githubLink} />}
 
     </div>
+  )
+}
+
+function ExternalLink(props: {githubLink: string, webLink?: string}) {
+  return (
+    <div className={globalStyles["center-flex"] + " " + styles["external-link"]}>
+        <a href={props.githubLink}>
+          <Avatar alt="github link" src={githubIcon} />
+        </a>
+
+        {props.webLink && <a href={props.webLink}>
+          <LinkOutlinedIcon sx={{color: "whitesmoke"}} fontSize="large" />
+        </a>}
+      </div>
   )
 }
 
