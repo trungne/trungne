@@ -27,7 +27,12 @@ function Header() {
   )
 }
 
-function ProjectCard(props: { index: number, name: string, description: string, onProjectSelected: (i: number) => void }) {
+function ProjectCard(props: { 
+  index: number,
+  thumbnail: string,
+  name: string, 
+  description: string, 
+  onProjectSelected: (i: number) => void }) {
   return (
     <Card className={styles.projectCard}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
@@ -47,7 +52,7 @@ function ProjectCard(props: { index: number, name: string, description: string, 
 
 function MadeWith(props: { imageUrls: string[] }) {
   return (
-    <div>
+    <div className={styles.madeWith}>
       <Typography variant="subtitle2" sx={{ color: "whitesmoke" }}>
         Made with
       </Typography>
@@ -97,6 +102,7 @@ function ProjectShowCase() {
               key={index}
               index={index}
               name={project.name}
+              thumbnail={project.thumbnail}
               description={project.description} />);
           })}
         </Box>
@@ -108,12 +114,8 @@ function ProjectShowCase() {
         }
       </div>
 
-      <div className={styles["made-with"]}>
-        {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
-      </div>
-
+      {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
     </div>
-
   )
 }
 

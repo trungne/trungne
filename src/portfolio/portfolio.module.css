@@ -33,7 +33,7 @@
     flex-basis: 200px;
 }
 
-.made-with{
+.madeWith{
     display: flex;
     flex-direction: column;
     justify-content: center;

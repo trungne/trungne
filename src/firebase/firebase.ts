@@ -40,6 +40,7 @@ class Firebase {
         name: doc.get("name"),
         description: doc.get("description"),
         madeWith: doc.get("made_with"),
+        thumbnail: doc.get("thumbnail"),
         previews: images
       });
     });
