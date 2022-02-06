@@ -34,6 +34,7 @@
 
 .outline-item:hover {
     opacity: 0.5;
+    padding: 0.5em 0 0.5em 0;
 }
 
 .avatar-container {
@@ -41,21 +42,10 @@
     flex-grow: 1;
     padding: 1em 1em 1em 1em;    
     flex-direction: column;
+    gap: 1em;
 }
 
 .avatar {
     width: 50% !important; 
     height: auto !important;
 }
-
-.quote {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-    background-color: gray;
-    border-radius: 1em;
-    text-align: center;
-    font-size: 3vmin;
-    padding: 1em 1em 1em 1em;
-    margin: 1em 0 1em 0;
-  }
-  

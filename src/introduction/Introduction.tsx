@@ -10,7 +10,7 @@ function MyAvatar() {
     return (
         <div className={globalStyles["center-flex"] + " " + styles["avatar-container"]}>
             <Avatar className={styles["avatar"]} alt="Trung's avatar" src={myAvatar} />
-            <div className={styles.quote}>
+            <div className={globalStyles["quote"]}>
                 "I like to build stuff."
             </div>
         </div>
