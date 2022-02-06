@@ -1,5 +1,5 @@
 .introduction {
-    min-width: 100%;
+    max-width: 100%;
     min-height: 100%;
     display: flex;
     background-color: #101120;

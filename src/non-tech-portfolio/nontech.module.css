@@ -1,6 +1,11 @@
-.nontech {
-    display: flex;
-    width: 100%;
-    height: 100%;
+.non-tech {
+    max-width: 100%;
+    min-height: 100%;
     background-color: #060718;
+}
+
+.header {
+    max-width: 100%;
+    padding: 1em 1em 1em 1em;
+    text-align: center;
 }
