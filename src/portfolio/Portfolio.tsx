@@ -39,14 +39,14 @@ function ProjectCard(props: {
     <Card className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
         <CardMedia src={props.thumbnail} component="img" alt={props.description} />
-        <CardContent>
+        {/* <CardContent>
           <Typography>
             {props.name}
           </Typography>
           <Typography>
             {props.description}
           </Typography>
-        </CardContent>
+        </CardContent> */}
       </CardActionArea>
     </Card>
   )
