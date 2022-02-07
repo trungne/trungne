@@ -38,7 +38,7 @@ function ProjectCard(props: {
   return (
     <Card className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
-        <CardMedia component="img" alt={props.description} />
+        <CardMedia src={props.thumbnail} component="img" alt={props.description} />
         <CardContent>
           <Typography>
             {props.name}
