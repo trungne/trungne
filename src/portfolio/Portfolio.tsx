@@ -6,7 +6,6 @@ import Carousel from "./Carousel";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import ProjectPreview from "./Project";
@@ -39,14 +38,6 @@ function ProjectCard(props: {
     <Card className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
         <CardMedia src={props.thumbnail} component="img" alt={props.description} />
-        {/* <CardContent>
-          <Typography>
-            {props.name}
-          </Typography>
-          <Typography>
-            {props.description}
-          </Typography>
-        </CardContent> */}
       </CardActionArea>
     </Card>
   )
@@ -134,11 +125,11 @@ function ProjectShowCase() {
 function ExternalLink(props: { githubLink: string, webLink?: string }) {
   return (
     <div className={globalStyles["center-flex"] + " " + styles["external-link"]}>
-      <a href={props.githubLink}>
+      <a href={props.githubLink} target="_blank" rel="noreferrer">
         <Avatar alt="github link" src={githubIcon} />
       </a>
 
-      {props.webLink && <a href={props.webLink}>
+      {props.webLink && <a href={props.webLink} target="_blank" rel="noreferrer">
         <LinkOutlinedIcon sx={{ color: "whitesmoke" }} fontSize="large" />
       </a>}
     </div>

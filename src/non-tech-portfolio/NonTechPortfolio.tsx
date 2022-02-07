@@ -2,7 +2,7 @@ import styles from "./nontech.module.css";
 import globalStyles from "../global.module.css";
 import Typography from "@mui/material/Typography";
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
+import LinkSharpIcon from '@mui/icons-material/LinkSharp';
 
 import classroomImg from "./static/classroom.jpg";
 import videoImg from "./static/naune.jpg";
@@ -13,9 +13,9 @@ export default function NonTechPortfolio() {
         <div id="non-tech" className={styles["non-tech"]}>
             <Header />
             <div className={globalStyles["center-flex"] + " " + styles["images"]}>
-                <Image imgPath={classroomImg} caption={"My lovely students"} />
+                <Image url={"https://www.facebook.com/englishgardenVietNam/"} imgPath={classroomImg} caption={"My lovely students"} />
 
-                <Image imgPath={videoImg} caption={"Me trying to explain nothing is real"} />
+                <Image url={"https://www.youtube.com/channel/UCsyzWAjXCFveWqJhfqTf9yA"} imgPath={videoImg} caption={"Me trying to explain nothing is real"} />
             </div>
         </div>
     )
@@ -31,7 +31,7 @@ function Header() {
     )
 }
 
-function Image(props: { imgPath: string, caption: string }) {
+function Image(props: { imgPath: string, caption: string, url: string }) {
     const [isHovering, setIsHovering] = useState(false);
     const hoveringStyle = {
         opacity: 0.5,
@@ -51,7 +51,7 @@ function Image(props: { imgPath: string, caption: string }) {
         <div className={styles["image"]}>
             <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["image-container"]} style={isHovering ? hoveringStyle : nonHoveringStyle}>
                 <img alt={props.caption} src={props.imgPath} style={{ width: "100%" }} />
-                {isHovering && <FloatingButton url={""} />}
+                {isHovering && <FloatingButton url={props.url} />}
             </div>
 
             <Typography className={styles["caption"] + " " + globalStyles["quote"]} variant="caption">
@@ -63,8 +63,10 @@ function Image(props: { imgPath: string, caption: string }) {
 
 function FloatingButton(props: { url: string }) {
     return (
-        <Fab className={styles["button"]} color="primary" aria-label="add">
-            <AddIcon />
+        <Fab href={props.url} target="_blank" className={styles["button"]} color="primary" aria-label="add">
+            
+                <LinkSharpIcon />
+            
         </Fab>
     )
 }
