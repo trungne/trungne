@@ -18,7 +18,11 @@
 
 .project-card {
     text-align: center;
-    flex-basis: 200px;
+    flex-basis: 400px;
+}
+
+.project-info {
+    flex-direction: column;
 }
 
 .made-with{

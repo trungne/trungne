@@ -1,6 +1,7 @@
 import styles from "./portfolio.module.css"
 import globalStyles from "../global.module.css"
 import Typography from "@mui/material/Typography"
+import Backdrop from '@mui/material/Backdrop';
 import Carousel from "./Carousel";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
@@ -16,6 +17,7 @@ import githubIcon from "./static/github.png";
 import chips from "../about/TechChip";
 import { nanoid } from "nanoid";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
+import useComponentVisible from "./useComponentVisible";
 function Header() {
   return (
     <div className={styles["header"]}>
@@ -75,11 +77,14 @@ const projectsBoxStyle = {
 
 function ProjectShowCase() {
   const firebaseContext = useContext(FirebaseContext);
+
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
-  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(-1);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
+  const {ref , isComponentVisible, setIsComponentVisible} = useComponentVisible(false);
 
   const handleProjectSelected = (index: number) => {
     setCurrentProjectIndex(index);
+    setIsComponentVisible(true);
   }
 
   useEffect(() => {
@@ -87,7 +92,6 @@ function ProjectShowCase() {
       firebaseContext.getProjects().then(
         projects => {
           setProjects(projects);
-          setCurrentProjectIndex(0);
         }
       )
     }
@@ -109,31 +113,35 @@ function ProjectShowCase() {
         : <Skeleton variant="rectangular" sx={{ backgroundColor: "gray" }} width={"100%"} height={200} />
       }
 
-      <div className={globalStyles["center-flex"]}>
-        {currentProjectIndex !== -1 && <Carousel images={projects[currentProjectIndex].previews} />
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isComponentVisible}
+
+      >
+        {projects && projects.length > 0 &&
+          <div ref={ref} className={globalStyles["center-flex"] + " " + styles["project-info"]}>
+            <Carousel images={projects[currentProjectIndex].previews} />
+            <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />
+            <ExternalLink githubLink={projects[currentProjectIndex].githubLink} />
+          </div>
         }
-      </div>
-
-      {currentProjectIndex !== -1 && <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />}
-
-      {currentProjectIndex !== -1 && <ExternalLink 
-        githubLink={projects[currentProjectIndex].githubLink} />}
+      </Backdrop>
 
     </div>
   )
 }
 
-function ExternalLink(props: {githubLink: string, webLink?: string}) {
+function ExternalLink(props: { githubLink: string, webLink?: string }) {
   return (
     <div className={globalStyles["center-flex"] + " " + styles["external-link"]}>
-        <a href={props.githubLink}>
-          <Avatar alt="github link" src={githubIcon} />
-        </a>
+      <a href={props.githubLink}>
+        <Avatar alt="github link" src={githubIcon} />
+      </a>
 
-        {props.webLink && <a href={props.webLink}>
-          <LinkOutlinedIcon sx={{color: "whitesmoke"}} fontSize="large" />
-        </a>}
-      </div>
+      {props.webLink && <a href={props.webLink}>
+        <LinkOutlinedIcon sx={{ color: "whitesmoke" }} fontSize="large" />
+      </a>}
+    </div>
   )
 }
 
