@@ -12,16 +12,15 @@ import SwipeableViews from 'react-swipeable-views';
 import Image from "./Image";
 
 const boxStyle = {
-    maxWidth: 400, 
-    flexGrow: 1,
-    marginTop: "1em",
-    marginBottom: "1em",
+    width: '100%',
+    maxWidth: '100%',
+    minWidth: '100%',
+
 }
 export default function Carousel(props: { images: Image[] }) {
     const theme = useTheme();
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = props.images.length;
-
     useEffect(() => {
         setActiveStep(0);
     }, [props.images])
@@ -38,6 +37,10 @@ export default function Carousel(props: { images: Image[] }) {
         setActiveStep(step);
     };
 
+    if (activeStep >= props.images.length) {
+        return null;
+    }
+
     return (
         <Box sx={boxStyle}>
             <Paper
@@ -46,8 +49,8 @@ export default function Carousel(props: { images: Image[] }) {
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     height: 50,
-                    pl: 2,
                     backgroundColor: "white"
                 }}
             >
@@ -65,11 +68,13 @@ export default function Carousel(props: { images: Image[] }) {
                             <Box
                                 component="img"
                                 sx={{
-
                                     display: 'block',
-                                    maxWidth: '100%',
+                                    maxWidth: "100%",
                                     width: '100%',
                                     overflow: 'hidden',
+                                    objectFit: 'contain',
+                                    minHeight: "50vh",
+                                    maxHeight: "60vh",
 
                                 }}
                                 src={image.imgPath}

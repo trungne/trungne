@@ -13,7 +13,7 @@ import Avatar from "@mui/material/Avatar";
 import FirebaseContext from "../firebase/context";
 import { useContext, useEffect, useState } from "react";
 import githubIcon from "./static/github.png";
-import chips from "../about/TechChip";
+import { chipsWithoutLabels } from "../about/TechChip";
 import { nanoid } from "nanoid";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import useComponentVisible from "./useComponentVisible";
@@ -51,7 +51,7 @@ function MadeWith(props: { imageUrls: string[] }) {
       </Typography>
       <Box display={"flex"} gap={"1em"}>
         {props.imageUrls.map(url => {
-          return <div key={nanoid()}> {chips[url]} </div>;
+          return <div key={nanoid()}> {chipsWithoutLabels[url]} </div>;
         })}
       </Box>
     </div>
@@ -71,7 +71,7 @@ function ProjectShowCase() {
 
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
   const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
-  const {ref , isComponentVisible, setIsComponentVisible} = useComponentVisible(false);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
 
   const handleProjectSelected = (index: number) => {
     setCurrentProjectIndex(index);

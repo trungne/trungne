@@ -29,6 +29,22 @@ function TechChip(props: { name: string, icon: string }) {
         avatar={<Avatar src={props.icon} />} />
 }
 
+const chipsWithoutLabels: any = {
+    git: <Avatar src={gitIcon} />,
+    html: <Avatar src={htmlIcon} />,
+    css: <Avatar src={cssIcon} />,
+    javascript: <Avatar src={jsIcon} />,
+    typescript: <Avatar src={tsIcon} />,
+    java: <Avatar src={javaIcon} />,
+    python: <Avatar src={pythonIcon} />,
+    react: <Avatar src={reactIcon} />,
+    angular: <Avatar src={angularIcon} />,
+    androidstudio: <Avatar src={androidStudioIcon} />,
+    firebase: <Avatar src={firebaseIcon} />,
+    mui: <Avatar src={muiIcon} />,
+    primeng: <Avatar src={primeNgIcon} />,
+}
+
 const chips: any = {
     git: <TechChip name="git" icon={gitIcon} />,
     html: <TechChip name="HTML5" icon={htmlIcon} />,
@@ -45,5 +61,8 @@ const chips: any = {
     primeng: <TechChip name="PrimeNG" icon={primeNgIcon} />,
 };
 
-export default chips;
+
+
+export {chips, chipsWithoutLabels};
+
 

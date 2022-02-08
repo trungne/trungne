@@ -31,19 +31,30 @@ class Firebase {
     querySnapshot.forEach((doc) => {
       const previewImagePaths: string[] = doc.get("previews");
       const previewDescription: string[] = doc.get("preview_descriptions");
-      const images: Image[] = [];
+      const previews: Image[] = [];
       previewImagePaths.forEach((path, index) => {
-        images.push({imgPath: path, label: previewDescription[index]});
+        if (path) {
+          previews.push({ imgPath: path, label: previewDescription[index] || "" });
+        }
       })
+      const name = doc.get("name");
+      const description = doc.get("description");
+      const madeWith = doc.get("made_with");
+      const thumbnail = doc.get("thumbnail");
+      const githubLink = doc.get("github_link");
 
-      projects.push({
-        name: doc.get("name"),
-        description: doc.get("description"),
-        madeWith: doc.get("made_with"),
-        thumbnail: doc.get("thumbnail"),
-        githubLink: doc.get("github_link"),
-        previews: images
-      });
+      if (name && description && madeWith && thumbnail && githubLink && previews) {
+        const project = {
+          name: name,
+          description: description,
+          madeWith: madeWith,
+          thumbnail: thumbnail,
+          githubLink: githubLink,
+          previews: previews
+        }
+        projects.push(project);
+      }
+
     });
     return projects;
   }

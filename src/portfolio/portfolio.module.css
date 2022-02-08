@@ -22,7 +22,15 @@
 }
 
 .project-info {
+    max-width: 80%;
+    min-width: 80%;
+    width: 80%;
+    background-color: rgb(0, 0, 0);
     flex-direction: column;
+}
+
+.project-info div {
+    
 }
 
 .made-with{
@@ -37,4 +45,9 @@
 
 .github-icon {
     width: 5em;
+}
+
+
+.carousel-box {
+    width: clamp(200px, 50%, 400px);
 }
