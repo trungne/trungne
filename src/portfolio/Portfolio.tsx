@@ -2,7 +2,7 @@ import styles from "./portfolio.module.css"
 import globalStyles from "../global.module.css"
 import Typography from "@mui/material/Typography"
 import Backdrop from '@mui/material/Backdrop';
-import Carousel from "./Carousel";
+import MyCarousel from "./Carousel";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
@@ -111,7 +111,7 @@ function ProjectShowCase() {
       >
         {projects && projects.length > 0 &&
           <div ref={ref} className={globalStyles["center-flex"] + " " + styles["project-info"]}>
-            <Carousel images={projects[currentProjectIndex].previews} />
+            <MyCarousel images={projects[currentProjectIndex].previews} />
             <MadeWith imageUrls={projects[currentProjectIndex].madeWith} />
             <ExternalLink githubLink={projects[currentProjectIndex].githubLink} />
           </div>
