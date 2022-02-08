@@ -1,4 +1,4 @@
-export default interface Image {
+export default interface MyImage {
     label: string;
     imgPath: string;
 }

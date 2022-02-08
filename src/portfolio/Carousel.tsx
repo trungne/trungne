@@ -3,18 +3,27 @@ import globalStyles from "../global.module.css";
 import { useEffect, useState } from "react";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Image from "./Image";
+import MyImage from "./MyImage";
+import { nanoid } from "nanoid";
 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
-
-export default function MyCarousel(props: { images: Image[] }) {
+const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
+export default function MyCarousel(props: { images: MyImage[]}) {
     const [index, setIndex] = useState(0);
+    
 
     // reset to first image when images change
     useEffect(() => {
         setIndex(0);
+        // force browser to load all images
+        props.images.forEach((pic) => {
+            new Image().src = pic.imgPath; 
+        })
+        return () => {
+            console.log("clean up");
+        }
     }, [props.images]);
 
     if (index > props.images.length - 1) {
@@ -25,7 +34,7 @@ export default function MyCarousel(props: { images: Image[] }) {
             <div className={globalStyles["center-flex"]}>
                 {props.images.map((image, idx) => {
                     if (idx === index) {
-                        return <FiberManualRecordIcon key={image.imgPath} />
+                        return checkedIcon;
                     }
                     return <FiberManualRecordOutlinedIcon key={image.imgPath} />
                 })}

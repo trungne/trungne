@@ -3,7 +3,7 @@ import { FirebaseOptions } from 'firebase/app';
 import { Firestore, getFirestore } from "firebase/firestore"
 
 import { collection, query, getDocs } from "firebase/firestore";
-import Image from '../portfolio/Image';
+import MyImage from '../portfolio/MyImage';
 import ProjectPreview from '../portfolio/Project';
 
 const config: FirebaseOptions = {
@@ -31,7 +31,7 @@ class Firebase {
     querySnapshot.forEach((doc) => {
       const previewImagePaths: string[] = doc.get("previews");
       const previewDescription: string[] = doc.get("preview_descriptions");
-      const previews: Image[] = [];
+      const previews: MyImage[] = [];
       previewImagePaths.forEach((path, index) => {
         if (path) {
           previews.push({ imgPath: path, label: previewDescription[index] || "" });

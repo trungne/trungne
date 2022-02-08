@@ -1,4 +1,4 @@
-import Image from "./Image";
+import MyImage from "./MyImage";
 
 export default interface ProjectPreview {
     thumbnail: string,
@@ -6,5 +6,5 @@ export default interface ProjectPreview {
     description: string,
     githubLink: string,
     madeWith: string[],
-    previews: Image[],
+    previews: MyImage[],
 }
