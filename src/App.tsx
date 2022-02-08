@@ -12,8 +12,10 @@ function App() {
     <div style={{width: "100%", height: "100%", position: "relative"}}>
       <Introduction />
       <About />
+      
       <div className={globalStyles['spacer'] + " " + globalStyles['layer-about-work']} />
       <Portfolio />
+      <div className={globalStyles['spacer'] + " " + globalStyles['layer-work-non-tech']} />
       <NonTechPortfolio />
       <Contact />
     </div>

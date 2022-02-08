@@ -21,9 +21,6 @@ export default function MyCarousel(props: { images: MyImage[]}) {
         props.images.forEach((pic) => {
             new Image().src = pic.imgPath; 
         })
-        return () => {
-            console.log("clean up");
-        }
     }, [props.images]);
 
     if (index > props.images.length - 1) {
