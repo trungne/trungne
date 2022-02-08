@@ -58,14 +58,6 @@ function MadeWith(props: { imageUrls: string[] }) {
   )
 }
 
-const projectsBoxStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: "space-around",
-  gap: "1em",
-  marginBottom: "1em",
-}
-
 function ProjectShowCase() {
   const firebaseContext = useContext(FirebaseContext);
 
@@ -89,9 +81,9 @@ function ProjectShowCase() {
   }, [firebaseContext]) // only run once
 
   return (
-    <div>
+    <div className={styles["project-showcase"]}>
       {projects.length > 0
-        ? <Box sx={projectsBoxStyle}>
+        ? <Box className={styles["project-box"]}>
           {projects.map((project, index) => {
             return (<ProjectCard onProjectSelected={handleProjectSelected}
               key={index}

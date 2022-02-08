@@ -8,8 +8,8 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-import {chips} from "./TechChip";
- 
+import { chips } from "./TechChip";
+
 function TechAndConfidentLevel(props: { chip: JSX.Element, confidentLevel: Star }) {
     return (
         <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
@@ -117,11 +117,14 @@ function Technologies() {
     );
 }
 
+
+
 export default function About() {
     return (
-        <div id="about" className={styles["about"]}>
+        <div id="about" className={globalStyles["center-flex"] + " " + styles["about"]}>
+
             <Header />
-            <Divider className={styles.divider} light />
+            <Divider flexItem className={styles.divider} light />
             <Experience />
         </div>
     )

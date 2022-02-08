@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export default function NonTechPortfolio() {
     return (
-        <div id="non-tech" className={styles["non-tech"]}>
+        <div id="non-tech" className={globalStyles["center-flex"] + " " + styles["non-tech"]}>
             <Header />
             <div className={globalStyles["center-flex"] + " " + styles["images"]}>
                 <Image url={"https://www.facebook.com/englishgardenVietNam/"} imgPath={classroomImg} caption={"My lovely students"} />
@@ -24,7 +24,7 @@ export default function NonTechPortfolio() {
 function Header() {
     return (
         <div className={styles["header"] + " " + globalStyles["center-flex"]}>
-            <Typography variant="h2" className={globalStyles["white-text"] + " " + styles["header-text"]}>
+            <Typography variant="h4" className={globalStyles["white-text"] + " " + styles["header-text"]}>
                 Besides coding, I also enjoy teaching English and making informative videos
             </Typography>
         </div>

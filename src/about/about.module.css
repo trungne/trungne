@@ -1,9 +1,11 @@
 .about {
     max-width: 100%;
-    background-color: #0c0d1d;
+    min-height: 100%;
+    background-color: #242961;
     padding: 1em 1em 1em 1em;
     overflow: hidden;
-    
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .header {
@@ -38,7 +40,9 @@
 }
 
 .experience {
+    flex-direction: row;
     max-width: 100%;
+    width: 100%;
     display: flex;
     padding: 1em 1em 1em 1em;
     gap: 1em;
@@ -76,7 +80,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .aboutTextContainer {
+    .experience {
         flex-direction: column;
         gap: 0;
     }

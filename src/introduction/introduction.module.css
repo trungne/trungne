@@ -2,8 +2,9 @@
     max-width: 100%;
     min-height: 100%;
     display: flex;
-    background-color: #101120;
+    background-color: #313780;
     flex-wrap: wrap;
+    z-index: -2;
 }
 
 .outline {
@@ -48,4 +49,23 @@
 .avatar {
     width: 50% !important; 
     height: auto !important;
+}
+.custom-shape-divider-top-1644338118 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1644338118 svg {
+    position: relative;
+    display: block;
+    width: calc(127% + 1.3px);
+    height: 123px;
+}
+
+.custom-shape-divider-top-1644338118 .shape-fill {
+    fill: #434A9C;
 }
