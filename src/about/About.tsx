@@ -122,11 +122,6 @@ function Technologies() {
 export default function About() {
     return (
         <div id="about" className={globalStyles["center-flex"] + " " + styles["about"]}>
-
-            <Header />
-            <Divider flexItem className={styles.divider} light />
-            <Experience />
-
             <div className={styles["wave"]}>
 
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -134,6 +129,11 @@ export default function About() {
 
                 </svg>
             </div>
+            <Header />
+            <Divider flexItem className={styles.divider} light />
+            <Experience />
+
+            
         </div>
     )
 }
