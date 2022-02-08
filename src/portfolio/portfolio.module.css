@@ -19,11 +19,14 @@
 .project-card {
     text-align: center;
     flex-basis: 400px;
+    background-color: #090a1b;
 }
 
 .project-info {
     flex-direction: column;
     gap: 1em;
+    background-color: #090a1b;
+    padding: 1em 0 1em 0;
 }
 
 .carousel-box {
@@ -43,6 +46,11 @@
     justify-content: center;
     align-items: center;
     background-color: gray;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 
@@ -61,9 +69,8 @@
 }
 
 .external-link {
-    width: 100%;
-    gap: 1em;
-    
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .github-icon {

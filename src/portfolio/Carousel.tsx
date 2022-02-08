@@ -24,12 +24,12 @@ export default function MyCarousel(props: { images: Image[] }) {
         <div className={styles["carousel-box"]} >
             <div className={globalStyles["center-flex"]}>
                 {props.images.map((image, idx) => {
-                    if (idx === index){
-                        return <FiberManualRecordIcon key={image.imgPath}/>
+                    if (idx === index) {
+                        return <FiberManualRecordIcon key={image.imgPath} />
                     }
-                    return <FiberManualRecordOutlinedIcon key={image.imgPath}/>
+                    return <FiberManualRecordOutlinedIcon key={image.imgPath} />
                 })}
-                
+
             </div>
             <div className={styles["carousel-inner"]}>
 
@@ -37,7 +37,12 @@ export default function MyCarousel(props: { images: Image[] }) {
                 <div
                     className={styles["carousel-button"]}
                     onClick={() => {
-                        index > 0 && setIndex(prevIndex => prevIndex - 1);
+                        if (index === 0) {
+                            setIndex(props.images.length - 1);
+                        }
+                        else {
+                            setIndex(prevIndex => prevIndex - 1);
+                        }
                     }}
                 >
                     <ChevronLeftIcon />
@@ -49,7 +54,12 @@ export default function MyCarousel(props: { images: Image[] }) {
                 <div
                     className={styles["carousel-button"]}
                     onClick={() => {
-                        index < props.images.length - 1 && setIndex(prevIndex => prevIndex + 1);
+                        if (index === props.images.length - 1){
+                            setIndex(0);
+                        }
+                        else {
+                            setIndex(prevIndex => prevIndex + 1)
+                        }
                     }}
                 >
                     <ChevronRightIcon />
