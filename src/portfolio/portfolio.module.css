@@ -4,7 +4,7 @@
     height: 100%;
     gap: 1em;
     background-color: #1d2149;
-    padding: 1em 1em 1em 1em;
+    
     flex-direction: column;
     
 }
@@ -104,3 +104,4 @@
         height: auto;
     }
 }
+

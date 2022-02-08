@@ -1,3 +1,5 @@
+import globalStyles from "./global.module.css";
+
 import Introduction from './introduction/Introduction';
 import Portfolio from './portfolio/Portfolio';
 import About from './about/About';

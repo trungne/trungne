@@ -131,7 +131,8 @@ function ExternalLink(props: { githubLink: string, webLink?: string }) {
 
 export default function Portfolio() {
   return (
-    <div id="my-work" className={styles.portfolio}>
+    <div id="my-work" style={{position: "relative"}} className={styles.portfolio}>
+      <div className={styles['spacer'] + ' ' + styles['layer']}></div>
       <Header />
       <ProjectShowCase />
     </div>

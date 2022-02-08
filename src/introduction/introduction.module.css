@@ -4,7 +4,6 @@
     display: flex;
     background-color: #313780;
     flex-wrap: wrap;
-    z-index: -2;
 }
 
 .outline {
@@ -50,7 +49,7 @@
     width: 50% !important; 
     height: auto !important;
 }
-.custom-shape-divider-top-1644338118 {
+.wave {
     position: absolute;
     top: 0;
     left: 0;
@@ -59,14 +58,14 @@
     line-height: 0;
 }
 
-.custom-shape-divider-top-1644338118 svg {
+.wave svg {
     position: relative;
     display: block;
     width: calc(127% + 1.3px);
     height: 123px;
 }
 
-.custom-shape-divider-top-1644338118 .shape-fill {
+.wave .shape-fill {
     fill: #434A9C;
 }
 
