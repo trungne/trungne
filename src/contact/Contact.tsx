@@ -39,7 +39,7 @@ export default function Contact() {
 
 
     return (
-        <div onMouseOver={handleMouseOverContact}
+        <div id="contact" onMouseOver={handleMouseOverContact}
             onMouseLeave={handleMouseOutContact}
             className={globalStyles["center-flex"] + " " + styles['contact']}>
             <Wave />

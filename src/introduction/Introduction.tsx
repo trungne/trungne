@@ -19,9 +19,9 @@ function MyAvatar() {
 function Outline() {
     return (
         <Box className={globalStyles["center-flex"] + " " + styles["outline"]}>
-            <Typography sx={{ marginBottom: "1em" }} className={styles["outline-header"]} variant="h2">
+            {/* <Typography sx={{ marginBottom: "1em" }} className={styles["outline-header"]} variant="h2">
                 Hi!
-            </Typography>
+            </Typography> */}
             <div className={styles["outline-items"]}>
                 <Typography
                     className={globalStyles["white-text"] + " " + styles["outline-item"]} variant="subtitle1">
@@ -42,6 +42,13 @@ function Outline() {
                     🔎
                     <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#non-tech">
                         Non-tech
+                    </Link>
+                </Typography>
+
+                <Typography className={globalStyles["white-text"] + " " + styles["outline-item"]} variant="subtitle1">
+                    📧 
+                    <Link sx={{ color: 'inherit', textDecoration: 'inherit' }} href="#contact">
+                        Contact
                     </Link>
                 </Typography>
             </div>
