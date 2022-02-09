@@ -17,6 +17,7 @@ function App() {
       <Portfolio />
       <div className={globalStyles['spacer'] + " " + globalStyles['layer-work-non-tech']} />
       <NonTechPortfolio />
+      <div className={globalStyles['spacer'] + " " + globalStyles['layer-non-tech-contact']} />
       <Contact />
     </div>
   );

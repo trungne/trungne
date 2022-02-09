@@ -5,6 +5,7 @@
     background-color: #20246d;
     padding: 1em 1em 1em 1em;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .header {

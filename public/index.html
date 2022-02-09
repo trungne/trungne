@@ -9,14 +9,26 @@
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+
+  <script defer src="https://cdn.jsdelivr.net/npm/kute.js@2.0.0/kute.min.js"></script>
+  <script defer>
+    const tween = KUTE.fromTo(
+      '#blob1',
+      { path: '#blob1'},
+      { path: '#blob2'},
+      { repeat: 999, duration: 3000, yoyo: true}
+    )
+    tween.start();
+  </script>
+
   <title>It's Trung!</title>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <script src="https://cdn.jsdelivr.net/npm/kute.js@2.0.0/kute.min.js"></script>
-
+  
 </body>
 
 </html>
