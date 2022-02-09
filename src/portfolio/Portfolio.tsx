@@ -4,21 +4,21 @@ import Typography from "@mui/material/Typography"
 import Backdrop from '@mui/material/Backdrop';
 import MyCarousel from "./Carousel";
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import ProjectPreview from "./Project";
 import Avatar from "@mui/material/Avatar";
 import FirebaseContext from "../firebase/context";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import githubIcon from "./static/github.png";
 import { chipsWithoutLabels } from "../about/TechChip";
 import { nanoid } from "nanoid";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import useComponentVisible from "./useComponentVisible";
 import anime from "animejs";
-
+import useHovering from "../hooks/useHovering";
+import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 function Header() {
   return (
     <div className={styles["header"]}>
@@ -36,9 +36,13 @@ function ProjectCard(props: {
   description: string,
   onProjectSelected: (i: number) => void
 }) {
+  const {isHovering, handleMouseOver, handleMouseOut} = useHovering();
+
+
   return (
-    <Card className={styles["project-card"]}>
+    <Card onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
+        {isHovering && <VisibilityRoundedIcon className={styles['click-to-view']}/>}
         <CardMedia src={props.thumbnail} component="img" alt={props.description} />
       </CardActionArea>
     </Card>
@@ -130,44 +134,44 @@ function ExternalLink(props: { githubLink: string, webLink?: string }) {
 }
 
 export default function Portfolio() {
-  useEffect(() => {
-    anime({
-      targets: "#blob1",
+  // useEffect(() => {
+  //   anime({
+  //     targets: "#blob1",
 
-      translateX: function() {
-        return anime.random(0, 270);
-      },
-      translateY: function() {
-        return anime.random(0, 270);
-      },
-      direction: 'alternate',
+  //     translateX: function() {
+  //       return anime.random(0, 270);
+  //     },
+  //     translateY: function() {
+  //       return anime.random(0, 270);
+  //     },
+  //     direction: 'alternate',
 
-      easing: 'linear',
-      loop: true,
-      duration: 300,
-    });
-    anime({
-      targets: "#blob2",
+  //     easing: 'linear',
+  //     loop: true,
+  //     duration: 300,
+  //   });
+  //   anime({
+  //     targets: "#blob2",
 
-      translateX: function() {
-        return anime.random(0, 600);
-      },
-      translateY: function() {
-        return anime.random(0, 600);
-      },
-      direction: 'alternate',
-      easing: 'linear',
-      loop: true,
-      duration: 3000,
-    });
-  }, [])
+  //     translateX: function() {
+  //       return anime.random(0, 600);
+  //     },
+  //     translateY: function() {
+  //       return anime.random(0, 600);
+  //     },
+  //     direction: 'alternate',
+  //     easing: 'linear',
+  //     loop: true,
+  //     duration: 3000,
+  //   });
+  // }, [])
 
   // https://github.com/fireship-io/wavy-curvey-blobby-website/blob/main/index.html
   return (
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
       <ProjectShowCase />
-      
+
       {/* <svg id="visual" viewBox="0 0 960 300" width="100vw" height="900" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1">
         <g transform="translate(476.9861764361457 145.54687535613897)"><path id="blob1" d="M29.7 -52.7C35.8 -48 36.1 -34.5 36.4 -24.2C36.8 -14 37.1 -7 41.9 2.7C46.7 12.5 55.8 25 55 34.4C54.1 43.8 43.3 50 32.5 55.9C21.7 61.9 10.8 67.4 1.1 65.6C-8.7 63.7 -17.3 54.4 -23.8 45.9C-30.3 37.5 -34.6 30 -36.8 22.5C-39 15 -39 7.5 -41.6 -1.5C-44.2 -10.5 -49.4 -21 -49 -31.7C-48.7 -42.4 -42.9 -53.2 -33.8 -56.1C-24.7 -59.1 -12.3 -54 -0.3 -53.6C11.8 -53.2 23.7 -57.3 29.7 -52.7" fill="#66b2b2"></path>
         </g>

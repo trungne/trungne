@@ -8,6 +8,8 @@ import classroomImg from "./static/classroom.jpg";
 import videoImg from "./static/naune.jpg";
 import { useState } from "react";
 
+import useHovering from "../hooks/useHovering";
+
 export default function NonTechPortfolio() {
     return (
         <div id="non-tech" className={globalStyles["center-flex"] + " " + styles["non-tech"]}>
@@ -32,24 +34,11 @@ function Header() {
 }
 
 function Image(props: { imgPath: string, caption: string, url: string }) {
-    const [isHovering, setIsHovering] = useState(false);
-    const hoveringStyle = {
-        opacity: 0.5,
-    }
-    const nonHoveringStyle = {
-        opacity: 1,
-    }
-    const handleMouseOver = () => {
-        setIsHovering(true);
-    }
-
-    const handleMouseOut = () => {
-        setIsHovering(false);
-    }
+    const {isHovering, handleMouseOver, handleMouseOut} = useHovering();
 
     return (
         <div className={styles["image"]}>
-            <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["image-container"]} style={isHovering ? hoveringStyle : nonHoveringStyle}>
+            <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["image-container"]}>
                 <img alt={props.caption} src={props.imgPath} style={{ width: "100%" }} />
                 {isHovering && <FloatingButton url={props.url} />}
             </div>
@@ -64,9 +53,9 @@ function Image(props: { imgPath: string, caption: string, url: string }) {
 function FloatingButton(props: { url: string }) {
     return (
         <Fab href={props.url} target="_blank" className={styles["button"]} color="primary" aria-label="add">
-            
-                <LinkSharpIcon />
-            
+
+            <LinkSharpIcon />
+
         </Fab>
     )
 }

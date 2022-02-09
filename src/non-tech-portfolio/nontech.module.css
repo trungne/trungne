@@ -33,6 +33,11 @@
     align-items: center;
     gap: 1em;
 }
+
+.image:hover {
+    opacity: 0.5;
+}
+
 .caption {
     text-align: center;
 }

@@ -36,8 +36,13 @@
 }
 
 .project-card {
+    position: relative;
     text-align: center;
     flex-basis: 400px;
+}
+
+.project-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .project-info {
@@ -96,6 +101,20 @@
 
 .github-icon {
     width: 5em;
+}
+
+.click-to-view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #66b2b2;
+    border-radius: 50%;
+
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    box-shadow: 4px 4px #000000;
+    
 }
 
 
