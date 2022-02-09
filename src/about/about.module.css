@@ -39,7 +39,7 @@
 }
 
 .experience {
-    flex-direction: row;
+    flex-direction: column;
     max-width: 100%;
     width: 100%;
     display: flex;
@@ -54,11 +54,33 @@
     word-wrap: break-word;
 }
 
-.tech-container {
-    flex-basis: 400px;
-    flex-grow: 1;
+.experience-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    gap: 1em;
+    margin: 1em 1em 1em 1em;
 }
 
+.experience-card {
+    background-color: rgb(224, 188, 140) !important;
+    min-height: 150px;
+    height: 150px;
+    max-height: 300px;
+    flex-basis: 400px;
+    
+    flex-direction: column;
+
+}
+
+.experience-card .experience-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
 
 .chip {
     background-color: whitesmoke;

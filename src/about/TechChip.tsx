@@ -15,8 +15,6 @@ import muiIcon from "./static/mui.png";
 import primeNgIcon from "./static/primeng.png";
 const chipStyle = {
     backgroundColor: "whitesmoke",
-    marginTop: "1em",
-    marginBottom: "1em",
     fontWeight: 800,
     paddingTop: "0.5em",
     paddingBottom: "0.5em",
@@ -29,7 +27,11 @@ function TechChip(props: { name: string, icon: string }) {
         avatar={<Avatar src={props.icon} />} />
 }
 
-const chipsWithoutLabels: any = {
+interface ChipCmp {
+    [key: string]: JSX.Element;
+}
+
+const chipsWithoutLabels: ChipCmp = {
     git: <Avatar src={gitIcon} />,
     html: <Avatar src={htmlIcon} />,
     css: <Avatar src={cssIcon} />,
@@ -45,7 +47,9 @@ const chipsWithoutLabels: any = {
     primeng: <Avatar src={primeNgIcon} />,
 }
 
-const chips: any = {
+
+
+const chips: ChipCmp = {
     git: <TechChip name="git" icon={gitIcon} />,
     html: <TechChip name="HTML5" icon={htmlIcon} />,
     css: <TechChip name="CSS3" icon={cssIcon} />,
