@@ -5,6 +5,7 @@
     height: 100%;
     background-color: #0c0e38;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -12,16 +13,17 @@
     display: flex;
     width: 100%;
     text-align: center;
+    
   }
   .eye{
     width: 10em;
-    height: 5em;
     background: #fff;
     display: inline-block;
     margin: 40px;
     border-radius: 85%;
     position: relative;
     overflow: hidden;
+    transition: height 500ms;
   }
   
   .ball{
@@ -37,7 +39,6 @@
   }
   
 .send-email-box {
-  width: 90%;
   padding: 1em 1em 1em 1em;
   background-color: whitesmoke;
   display: flex;

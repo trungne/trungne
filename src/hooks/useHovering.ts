@@ -11,7 +11,7 @@ const useHovering = () => {
         setIsHovering(false);
     }
     
-    return {isHovering, setIsHovering, handleMouseOver, handleMouseOut};
+    return [isHovering, setIsHovering, handleMouseOver, handleMouseOut] as const;
 }
 
 export default useHovering;

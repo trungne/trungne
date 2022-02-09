@@ -34,7 +34,7 @@ function Header() {
 }
 
 function Image(props: { imgPath: string, caption: string, url: string }) {
-    const {isHovering, handleMouseOver, handleMouseOut} = useHovering();
+    const [isHovering, setIsHovering, handleMouseOver, handleMouseOut] = useHovering();
 
     return (
         <div className={styles["image"]}>
