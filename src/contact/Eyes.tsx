@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./contact.module.css";
 
-const shutEyes = {height: 0};
 
 
 export default function Eyes(props: {

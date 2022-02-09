@@ -6,7 +6,6 @@ import LinkSharpIcon from '@mui/icons-material/LinkSharp';
 
 import classroomImg from "./static/classroom.jpg";
 import videoImg from "./static/naune.jpg";
-import { useState } from "react";
 
 import useHovering from "../hooks/useHovering";
 
@@ -34,7 +33,7 @@ function Header() {
 }
 
 function Image(props: { imgPath: string, caption: string, url: string }) {
-    const [isHovering, setIsHovering, handleMouseOver, handleMouseOut] = useHovering();
+    const [isHovering, handleMouseOver, handleMouseOut] = useHovering();
 
     return (
         <div className={styles["image"]}>

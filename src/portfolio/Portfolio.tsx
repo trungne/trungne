@@ -36,7 +36,7 @@ function ProjectCard(props: {
   description: string,
   onProjectSelected: (i: number) => void
 }) {
-  const [isHovering, setIsHovering, handleMouseOver, handleMouseOut] = useHovering();
+  const [isHovering, handleMouseOver, handleMouseOut] = useHovering();
 
 
   return (
