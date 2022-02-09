@@ -36,3 +36,33 @@
     border: 15px solid #333;
   }
   
+.send-email-box {
+  width: 90%;
+  padding: 1em 1em 1em 1em;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.send-email-box .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.send-email-box .personal-information {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.send-email-box .personal-information .field {
+  flex-basis: 400px;
+  flex-grow: 1;
+}
+
+.send-email-box .email-header-text {
+  font-size: 2em !important;
+}
+
