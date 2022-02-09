@@ -17,5 +17,5 @@ export default function useComponentVisible(initialIsVisible: boolean) {
         };
     }, []);
 
-    return { ref, isComponentVisible, setIsComponentVisible };
+    return [ ref, isComponentVisible, setIsComponentVisible ] as const;
 }

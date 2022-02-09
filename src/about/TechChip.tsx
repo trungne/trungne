@@ -13,6 +13,8 @@ import androidStudioIcon from "./static/androidstudio.png";
 import firebaseIcon from "./static/firebase.png";
 import muiIcon from "./static/mui.png";
 import primeNgIcon from "./static/primeng.png";
+
+import { nanoid } from 'nanoid';
 const chipStyle = {
     backgroundColor: "whitesmoke",
     fontWeight: 800,
@@ -32,37 +34,37 @@ interface ChipCmp {
 }
 
 const chipsWithoutLabels: ChipCmp = {
-    git: <Avatar src={gitIcon} />,
-    html: <Avatar src={htmlIcon} />,
-    css: <Avatar src={cssIcon} />,
-    javascript: <Avatar src={jsIcon} />,
-    typescript: <Avatar src={tsIcon} />,
-    java: <Avatar src={javaIcon} />,
-    python: <Avatar src={pythonIcon} />,
-    react: <Avatar src={reactIcon} />,
-    angular: <Avatar src={angularIcon} />,
-    androidstudio: <Avatar src={androidStudioIcon} />,
-    firebase: <Avatar src={firebaseIcon} />,
-    mui: <Avatar src={muiIcon} />,
-    primeng: <Avatar src={primeNgIcon} />,
+    git: <Avatar key={nanoid()} src={gitIcon} />,
+    html: <Avatar key={nanoid()} src={htmlIcon} />,
+    css: <Avatar key={nanoid()} src={cssIcon} />,
+    javascript: <Avatar key={nanoid()} src={jsIcon} />,
+    typescript: <Avatar key={nanoid()} src={tsIcon} />,
+    java: <Avatar key={nanoid()} src={javaIcon} />,
+    python: <Avatar key={nanoid()} src={pythonIcon} />,
+    react: <Avatar key={nanoid()} src={reactIcon} />,
+    angular: <Avatar key={nanoid()} src={angularIcon} />,
+    androidstudio: <Avatar key={nanoid()} src={androidStudioIcon} />,
+    firebase: <Avatar key={nanoid()} src={firebaseIcon} />,
+    mui: <Avatar key={nanoid()} src={muiIcon} />,
+    primeng: <Avatar key={nanoid()} src={primeNgIcon} />,
 }
 
 
 
 const chips: ChipCmp = {
-    git: <TechChip name="git" icon={gitIcon} />,
-    html: <TechChip name="HTML5" icon={htmlIcon} />,
-    css: <TechChip name="CSS3" icon={cssIcon} />,
-    javascript: <TechChip name="JavaScript" icon={jsIcon} />,
-    typescript: <TechChip name="TypeScript" icon={tsIcon} />,
-    java: <TechChip name="Java" icon={javaIcon} />,
-    python: <TechChip name="Python" icon={pythonIcon} />,
-    react: <TechChip name="ReactJS" icon={reactIcon} />,
-    angular: <TechChip name="Angular" icon={angularIcon} />,
-    androidstudio: <TechChip name="Android Studio" icon={androidStudioIcon} />,
-    firebase: <TechChip name="Firebase" icon={firebaseIcon} />,
-    mui: <TechChip name="Mui" icon={muiIcon} />,
-    primeng: <TechChip name="PrimeNG" icon={primeNgIcon} />,
+    git: <TechChip key={nanoid()} name="git" icon={gitIcon} />,
+    html: <TechChip key={nanoid()} name="HTML5" icon={htmlIcon} />,
+    css: <TechChip key={nanoid()} name="CSS3" icon={cssIcon} />,
+    javascript: <TechChip key={nanoid()} name="JavaScript" icon={jsIcon} />,
+    typescript: <TechChip key={nanoid()} name="TypeScript" icon={tsIcon} />,
+    java: <TechChip key={nanoid()} name="Java" icon={javaIcon} />,
+    python: <TechChip key={nanoid()} name="Python" icon={pythonIcon} />,
+    react: <TechChip key={nanoid()} name="ReactJS" icon={reactIcon} />,
+    angular: <TechChip key={nanoid()} name="Angular" icon={angularIcon} />,
+    androidstudio: <TechChip key={nanoid()} name="Android Studio" icon={androidStudioIcon} />,
+    firebase: <TechChip key={nanoid()} name="Firebase" icon={firebaseIcon} />,
+    mui: <TechChip key={nanoid()} name="Mui" icon={muiIcon} />,
+    primeng: <TechChip key={nanoid()} name="PrimeNG" icon={primeNgIcon} />,
 };
 
 

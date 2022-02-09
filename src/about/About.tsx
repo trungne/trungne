@@ -42,7 +42,6 @@ function Experience() {
 
                 <ExperienceCard name="Back-end" children={[
                     chips.firebase,
-                    
                 ]} />
             </div>
         </div>
