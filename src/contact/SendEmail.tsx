@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Backdrop from '@mui/material/Backdrop';
 
 import styles from "./contact.module.css";
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Alert from '@mui/material/Alert';
 import { AlertColor } from '@mui/material';
@@ -57,6 +59,34 @@ function MySnackBar({ toast, handleClose }: SnackBarProps) {
     )
 }
 
+interface captchaProps {
+    open: boolean,
+    onClose: () => void,
+    onCaptchaCompleted: () => void,
+}
+function Captcha({ open, onClose, onCaptchaCompleted }: captchaProps) {
+    const recaptchaRef = useRef<any>(null);
+    useEffect(() => {
+        if (open){
+            recaptchaRef.current.reset();
+        }
+    }, [open])
+    return (
+        <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+            onClick={onClose}
+        >
+            <ReCAPTCHA
+                ref={recaptchaRef}
+                onChange={onCaptchaCompleted}
+                sitekey={'6LcLKGkeAAAAACfPQ-5x_Fse5uOmy5OYrwo1TJ8Y'}
+            />
+
+        </Backdrop>
+    )
+}
+
 export default function SendEmail() {
     const form = useRef<HTMLFormElement>(null);
 
@@ -65,48 +95,68 @@ export default function SendEmail() {
     const [name, setName] = useState(" ");
     const [email, setEmail] = useState(" ");
     const [message, setMessage] = useState(" ");
+
     const [loading, setLoading] = useState(false);
+    const [captchaOpen, setCaptchaOpen] = useState(false);
 
     const [toast, setToast] = useState<ToastProps>({ open: false, message: "", severity: "info" });
-    const handleClose = () => {
+
+    const handleToastClose = () => {
         setToast((prev) => {
             return { open: false, message: prev.message, severity: prev.severity }
         });
-
     }
 
-    const sendEmail = (e: React.FormEvent) => {
-        e.preventDefault();
+    const openCaptcha = () => {
+        if (validateFields()){
+            setCaptchaOpen(true);
+        }
+    }
 
+    const handleCaptchaCompleted = () => {
+        sendEmail()
+        setCaptchaOpen(false);
+    }
+
+    const handleCaptchaClose = () => {
+        setCaptchaOpen(false);
+        setToast({ open: true, message: "Please verify that you are not Mark", severity: "error" });
+    }
+
+    const validateFields = () => {
         if (!name.trim() || !email.trim() || !message.trim()) {
             // to trigger errors
             setName("");
             setEmail("");
             setMessage("");
             setToast({ open: true, message: "Enter value for required field(s)", severity: "error" });
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    const sendEmail = () => {
         if (form === null || form.current === null) {
             return;
         }
-
-        setLoading(true);
-        emailjs
-            .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
-            .then((result) => {
-                setToast({ open: true, message: "Email Sent", severity: "success" });
-            }, (error) => {
-                console.log(error.text)
-                setToast({ open: true, message: "Failed to send email. Please try again later.", severity: "error" });
-            })
-            .finally(() => {
-                setLoading(false);
-            })
-
+        setLoading(true); 
+        if (validateFields()) {
+            emailjs
+                .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
+                .then((result) => {
+                    setToast({ open: true, message: "Email Sent", severity: "success" });
+                }, (error) => {
+                    console.log(error.text)
+                    setToast({ open: true, message: "Failed to send email. Please try again later.", severity: "error" });
+                })
+                .finally(() => {
+                    setLoading(false);
+                })
+        }
     }
     return (
-        <Box onSubmit={sendEmail} ref={form} noValidate autoComplete="off"
+        <Box onSubmit={() => {return false;}} ref={form} noValidate autoComplete="off"
             component="form" className={`${styles["send-email-box"]}`}>
             <Typography className={`${styles["email-header-text"]}`} sx={{ textAlign: "center" }} variant="h2">
                 Shoot me a message
@@ -139,16 +189,16 @@ export default function SendEmail() {
                     ? <LoadingButton className={styles['send-button']} loading={loading} variant="outlined">
                         Sending
                     </LoadingButton>
-                    : <Button 
-                    className={styles['send-button']} 
-                    onClick={event => { sendEmail(event) }} 
-                    variant="contained">
+                    : <Button
+                        className={styles['send-button']}
+                        onClick={openCaptcha}
+                        variant="contained">
                         Send
-                        </Button>
+                    </Button>
                 }
-
             </div>
-            <MySnackBar handleClose={handleClose} toast={toast} />
+            <Captcha open={captchaOpen} onClose={handleCaptchaClose} onCaptchaCompleted={handleCaptchaCompleted} />
+            <MySnackBar handleClose={handleToastClose} toast={toast} />
         </Box>
     )
 }
