@@ -67,7 +67,7 @@ interface captchaProps {
 function Captcha({ open, onClose, onCaptchaCompleted }: captchaProps) {
     const recaptchaRef = useRef<any>(null);
     useEffect(() => {
-        if (open){
+        if (open) {
             recaptchaRef.current.reset();
         }
     }, [open])
@@ -87,6 +87,14 @@ function Captcha({ open, onClose, onCaptchaCompleted }: captchaProps) {
     )
 }
 
+const validateEmail = (email: string) => {
+    return email
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};
+
 export default function SendEmail() {
     const form = useRef<HTMLFormElement>(null);
 
@@ -94,6 +102,7 @@ export default function SendEmail() {
     // when user hasn't entered anything
     const [name, setName] = useState(" ");
     const [email, setEmail] = useState(" ");
+    const [emailError, setEmailError] = useState(false);
     const [message, setMessage] = useState(" ");
 
     const [loading, setLoading] = useState(false);
@@ -108,7 +117,7 @@ export default function SendEmail() {
     }
 
     const openCaptcha = () => {
-        if (validateFields()){
+        if (validateFields()) {
             setCaptchaOpen(true);
         }
     }
@@ -133,6 +142,13 @@ export default function SendEmail() {
             return false;
         }
 
+        if (!validateEmail(email.trim())){
+            const message = `"${email}" is not a valid email!`
+            setEmailError(true);
+            setToast({ open: true, message: message, severity: "error" });
+            return false;
+        }
+
         return true;
     }
 
@@ -140,7 +156,7 @@ export default function SendEmail() {
         if (form === null || form.current === null) {
             return;
         }
-        setLoading(true); 
+        setLoading(true);
         if (validateFields()) {
             emailjs
                 .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
@@ -156,7 +172,7 @@ export default function SendEmail() {
         }
     }
     return (
-        <Box onSubmit={() => {return false;}} ref={form} noValidate autoComplete="off"
+        <Box onSubmit={() => { return false; }} ref={form} noValidate autoComplete="off"
             component="form" className={`${styles["send-email-box"]}`}>
             <Typography className={`${styles["email-header-text"]}`} sx={{ textAlign: "center" }} variant="h2">
                 Shoot me a message
@@ -168,7 +184,7 @@ export default function SendEmail() {
                         onChange={e => { setName(e.target.value) }}
                         name='from_name' className={styles['field']} required label="Your Name" />
                     <TextField
-                        error={!email}
+                        error={!email || emailError}
                         onChange={e => { setEmail(e.target.value) }}
                         name='from_email' className={styles['field']} required label="Your Email" />
                 </div>

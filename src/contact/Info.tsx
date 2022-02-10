@@ -24,7 +24,6 @@ export default function Info() {
             </div>
 
             <div className={styles['icon-container']}>
-                {/* <a href="https://github.com/trungne" rel="noreferrer" target="_blank"> */}
                 <img onClick={() => { setInfo({ info: "GitHub", link: "https://github.com/trungne" }) }} className={styles['icon']} alt="github icon" src={githubIcon} />
                 <img onClick={() => { setInfo({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} className={styles['icon']} alt="gmail icon" src={gmailIcon} />
                 <img onClick={() => { setInfo({ info: "+84 93 919 8601", link: "" }) }} className={styles['icon']} alt="zalo icon" src={zaloIcon} />
