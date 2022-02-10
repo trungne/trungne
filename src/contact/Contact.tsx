@@ -1,28 +1,11 @@
 import globalStyles from "../global.module.css";
 import styles from "./contact.module.css";
-import Typography from "@mui/material/Typography";
 import Eyes from "./Eyes";
 import useHovering from "../hooks/useHovering";
-
+import Info from "./Info";
 import SendEmail from "./SendEmail";
-import githubIcon from "./static/github.png";
-
-function Info() {
-    return (
-        <div className={`${globalStyles['center-flex']} ${styles['info']}`}>
-            <Typography variant="h4" className={`${globalStyles["white-text"]} ${styles['text']}`}>
-                Find my GitHub at
-            </Typography>
-            <a href="https://github.com/trungne" rel="noreferrer" target="_blank">
-                <img alt="github icon" src={githubIcon} />
-            </a>
-
-        </div>
-    )
-}
 
 function Wave() {
-    
     return (<div className={styles["wave"]}>
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className={styles["shape-fill"]}></path>
