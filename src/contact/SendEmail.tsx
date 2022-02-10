@@ -89,15 +89,15 @@ export default function SendEmail() {
             return;
         }
 
-        setToast({ open: true, message: "Email Sent", severity: "success" });
-        // emailjs
-        //     .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
+        
+        emailjs
+            .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
 
-        // .then((result) => {
-        //     console.log(result.text);
-        // }, (error) => {
-        //     console.error(error.text);
-        // });
+        .then((result) => {
+            setToast({ open: true, message: "Email Sent", severity: "success" });
+        }, (error) => {
+            setToast({ open: true, message: "Failed to send email. Please try again later.", severity: "error" });
+        });
     }
     return (
         <Box onSubmit={sendEmail} ref={form} noValidate autoComplete="off"
