@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import styles from "./contact.module.css";
 import React, { Fragment, useRef, useState } from 'react';
@@ -43,7 +44,7 @@ function MySnackBar({ toast, handleClose }: SnackBarProps) {
     return (
         <Snackbar
             open={toast.open}
-            // autoHideDuration={6000}
+            autoHideDuration={5000}
             onClose={handleClose}
         >
             <Alert variant="filled" sx={{ width: '100%' }} onClose={handleClose}
@@ -64,13 +65,14 @@ export default function SendEmail() {
     const [name, setName] = useState(" ");
     const [email, setEmail] = useState(" ");
     const [message, setMessage] = useState(" ");
+    const [loading, setLoading] = useState(false);
 
     const [toast, setToast] = useState<ToastProps>({ open: false, message: "", severity: "info" });
     const handleClose = () => {
-        setToast((prev) => {  
+        setToast((prev) => {
             return { open: false, message: prev.message, severity: prev.severity }
         });
-        
+
     }
 
     const sendEmail = (e: React.FormEvent) => {
@@ -89,15 +91,19 @@ export default function SendEmail() {
             return;
         }
 
-        
+        setLoading(true);
         emailjs
             .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
+            .then((result) => {
+                setToast({ open: true, message: "Email Sent", severity: "success" });
+            }, (error) => {
+                console.log(error.text)
+                setToast({ open: true, message: "Failed to send email. Please try again later.", severity: "error" });
+            })
+            .finally(() => {
+                setLoading(false);
+            })
 
-        .then((result) => {
-            setToast({ open: true, message: "Email Sent", severity: "success" });
-        }, (error) => {
-            setToast({ open: true, message: "Failed to send email. Please try again later.", severity: "error" });
-        });
     }
     return (
         <Box onSubmit={sendEmail} ref={form} noValidate autoComplete="off"
@@ -129,7 +135,18 @@ export default function SendEmail() {
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div></div>
-                <Button onClick={event => { sendEmail(event) }} sx={{ minWidth: "200px" }} variant="contained">Send</Button>
+                {loading
+                    ? <LoadingButton className={styles['send-button']} loading={loading} variant="outlined">
+                        Sending
+                    </LoadingButton>
+                    : <Button 
+                    className={styles['send-button']} 
+                    onClick={event => { sendEmail(event) }} 
+                    variant="contained">
+                        Send
+                        </Button>
+                }
+
             </div>
             <MySnackBar handleClose={handleClose} toast={toast} />
         </Box>

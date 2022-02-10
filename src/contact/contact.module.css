@@ -77,6 +77,10 @@
   font-size: 2em !important;
 }
 
+.send-email-box .send-button {
+  min-width: 200px;
+}
+
 .wave {
   position: absolute;
   bottom: 0;
@@ -97,3 +101,4 @@
 .wave .shape-fill {
   fill: #B4B5CA;
 }
+
