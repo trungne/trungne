@@ -3,9 +3,12 @@ import styles from "./contact.module.css";
 
 
 
-export default function Eyes(props: {
-    shut: boolean,
-    surprised: boolean}) {
+interface EyesProps {
+    shut: boolean;
+    surprised: boolean;
+}
+
+export default function Eyes({shut, surprised}: EyesProps) {
     const [eyesHeight, setEyesHeight] = useState("5em");
     const leftEyeBall = useRef<any>();
     const rightEyeBall = useRef<any>();
@@ -23,16 +26,16 @@ export default function Eyes(props: {
     };
 
     useEffect(() => {
-        if (props.shut) {
+        if (shut) {
             setEyesHeight("0");
         }
-        else if (props.surprised){
+        else if (surprised){
             setEyesHeight("7em");
         }
         else{
             setEyesHeight("5em");
         }
-    }, [props.surprised, props.shut])
+    }, [surprised, shut])
 
 
     useEffect(() => {

@@ -4,11 +4,58 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import styles from "./contact.module.css";
-import React, { useRef, useState } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Alert from '@mui/material/Alert';
+import { AlertColor } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 // import globalStyles from "../global.module.css";
+
+interface ToastProps {
+    open: boolean,
+    message?: string,
+    severity?: AlertColor,
+}
+
+interface SnackBarProps {
+    toast: ToastProps,
+    handleClose: () => void,
+}
+
+function MySnackBar({ toast, handleClose }: SnackBarProps) {
+    const action = (
+        <Fragment>
+            <IconButton
+                size="small"
+                aria-label='close'
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </Fragment>
+    );
+
+    return (
+        <Snackbar
+            open={toast.open}
+            // autoHideDuration={6000}
+            onClose={handleClose}
+        >
+            <Alert variant="filled" sx={{ width: '100%' }} onClose={handleClose}
+                action={action} severity={toast.severity}>
+                <Typography variant='button'>
+                    {toast?.message}
+                </Typography>
+            </Alert>
+        </Snackbar>
+    )
+}
+
 export default function SendEmail() {
     const form = useRef<HTMLFormElement>(null);
 
@@ -18,6 +65,14 @@ export default function SendEmail() {
     const [email, setEmail] = useState(" ");
     const [message, setMessage] = useState(" ");
 
+    const [toast, setToast] = useState<ToastProps>({ open: false, message: "", severity: "info" });
+    const handleClose = () => {
+        setToast((prev) => {  
+            return { open: false, message: prev.message, severity: prev.severity }
+        });
+        
+    }
+
     const sendEmail = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -26,6 +81,7 @@ export default function SendEmail() {
             setName("");
             setEmail("");
             setMessage("");
+            setToast({ open: true, message: "Enter value for required field(s)", severity: "error" });
             return;
         }
 
@@ -33,8 +89,10 @@ export default function SendEmail() {
             return;
         }
 
-        emailjs
-            .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
+        setToast({ open: true, message: "Email Sent", severity: "success" });
+        // emailjs
+        //     .sendForm('service_xyi4tga', 'template_9g72zwd', form.current, 'user_qJfCYlCGa3K6U3qX0Y80j')
+
         // .then((result) => {
         //     console.log(result.text);
         // }, (error) => {
@@ -70,10 +128,10 @@ export default function SendEmail() {
                 />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-                {/* <Alert severity="error"></Alert> */}
                 <div></div>
                 <Button onClick={event => { sendEmail(event) }} sx={{ minWidth: "200px" }} variant="contained">Send</Button>
             </div>
+            <MySnackBar handleClose={handleClose} toast={toast} />
         </Box>
     )
 }
