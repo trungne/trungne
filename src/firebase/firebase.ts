@@ -42,15 +42,17 @@ class Firebase {
       const madeWith = doc.get("made_with");
       const thumbnail = doc.get("thumbnail");
       const githubLink = doc.get("github_link");
+      const role = doc.get("role");
 
-      if (name && description && madeWith && thumbnail && githubLink && previews) {
+      if (name && description && madeWith && thumbnail && githubLink && previews && role) {
         const project = {
           name: name,
           description: description,
           madeWith: madeWith,
           thumbnail: thumbnail,
           githubLink: githubLink,
-          previews: previews
+          previews: previews,
+          role: role,
         }
         projects.push(project);
       }

@@ -1,7 +1,7 @@
 .portfolio {
     max-width: 100%;
     min-height: 100%;
-    height: 100%;
+    
     background-color: #F79862;
     gap: 1em;
     flex-direction: column;
@@ -51,6 +51,29 @@
     gap: 1em;
     background-color: #66b2b2;
     padding: 1em 0 1em 0;
+}
+
+.project-description-container {
+    width: 70%;
+    min-height: 15vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.project-description-container .description {
+    font-size: 2em !important;
+    font-weight: 300;
+    text-align: center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.project-description-container .role {
+    font-weight: 300;
+    text-align: justify;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .carousel-box {
@@ -121,6 +144,10 @@
 @media screen and (max-width: 665px) {
     .portfolio {
         height: auto;
+    }
+
+    .project-description-container {
+        width: 100%
     }
 }
 

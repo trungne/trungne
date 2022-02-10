@@ -6,6 +6,7 @@
     padding: 1em 1em 1em 1em;
     flex-direction: column;
     justify-content: space-evenly;
+    gap: 1em;
 }
 
 .header {
@@ -14,7 +15,12 @@
 }
 
 .header-text {
-    font-size: 2em;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 1em 1em 1em 1em;
+    font-size: 2vmax !important;
+    font-weight: 400;
+    text-align: justify;
 }
 
 .images {

@@ -16,7 +16,7 @@ import { chipsWithoutLabels } from "../about/TechChip";
 import { nanoid } from "nanoid";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import useComponentVisible from "./useComponentVisible";
-import anime from "animejs";
+// import anime from "animejs";
 import useHovering from "../hooks/useHovering";
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 function Header() {
@@ -34,23 +34,18 @@ function ProjectCard(props: {
   thumbnail: string,
   name: string,
   description: string,
-  onProjectHovered: (description: string) => void,
+  onProjectHovered: (i: number) => void,
   onProjectSelected: (i: number) => void
 }) {
   const [isHovering, handleMouseOver, handleMouseOut] = useHovering();
 
   const onMouseOver = () => {
     handleMouseOver();
-    props.onProjectHovered(props.description);
-  }
-
-  const onMouseLeave = () => {
-    handleMouseOut();
-    props.onProjectHovered("");
+    props.onProjectHovered(props.index);
   }
 
   return (
-    <Card onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} className={styles["project-card"]}>
+    <Card onMouseOver={onMouseOver} onMouseLeave={handleMouseOut} className={styles["project-card"]}>
       <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
         {isHovering && <VisibilityRoundedIcon className={styles['click-to-view']} />}
         <CardMedia src={props.thumbnail} component="img" alt={props.description} />
@@ -74,17 +69,28 @@ function MadeWith(props: { imageUrls: string[] }) {
   )
 }
 
-function ProjectDescription(props: { description: string }) {
+interface ProjectDescriptionProps {
+  description: string,
+  role: string,
+}
+function ProjectDescription({ description, role }: ProjectDescriptionProps) {
   return (
-    <Typography sx={{minHeight: "5em"}} variant="caption">
-      {props.description}
-    </Typography>
+    <div className={styles['project-description-container']}>
+      <Typography className={`${globalStyles['white-text']} ${styles['description']}`} variant="h4">
+        {description}
+      </Typography>
+
+      <Typography className={`${globalStyles['white-text']} ${styles['role']}`} variant="subtitle1">
+        {role}
+      </Typography>
+    </div>
+
   )
 }
 
 function ProjectShowCase(props: {
   projects: ProjectPreview[],
-  onProjectHovered: (description: string) => void,
+  onProjectHovered: (i: number) => void,
 }) {
   const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
   const [ref, isComponentVisible, setIsComponentVisible] = useComponentVisible(false);
@@ -145,10 +151,12 @@ function ExternalLink(props: { githubLink: string, webLink?: string }) {
 export default function Portfolio() {
   const firebaseContext = useContext(FirebaseContext);
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
-  const [description, setDescription] = useState(" ");
+  const [description, setDescription] = useState("Hover/Click on a project");
+  const [role, setRole] = useState(" ");
 
-  const onProjectHovered = (description: string) => {
-    setDescription(description);
+  const onProjectHovered = (i: number) => {
+    setDescription(projects[i].description);
+    setRole(projects[i].role);
   }
 
   useEffect(() => {
@@ -165,7 +173,7 @@ export default function Portfolio() {
   return (
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
-      <ProjectDescription description={description} />
+      <ProjectDescription role={role} description={description} />
       <ProjectShowCase onProjectHovered={onProjectHovered} projects={projects} />
     </div>
   )

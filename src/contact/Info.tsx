@@ -56,7 +56,7 @@ function InfoCard({ info, link }: InfoCardProps) {
         }
     }
     return (
-        <Tooltip disableHoverListener={!info} placement='left-start' title={link ? "Click to redirect" : "Click to copy" }>
+        <Tooltip disableHoverListener={!info} placement='left-start' title={link ? "Click to be redirected" : "Click to copy" }>
             <Paper className={styles['paper']} elevation={3}>
                 <Typography variant="caption" className={`${styles['text']}`}>
                     <div onClick={handleClick}>
