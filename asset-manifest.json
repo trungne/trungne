@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/trungne/static/css/main.840527af.css",
-    "main.js": "/trungne/static/js/main.fc46054c.js",
+    "main.css": "/trungne/static/css/main.7acff24a.css",
+    "main.js": "/trungne/static/js/main.d8c78d5d.js",
     "static/js/787.0f3314cf.chunk.js": "/trungne/static/js/787.0f3314cf.chunk.js",
     "static/media/profile-pic.png": "/trungne/static/media/profile-pic.43e7ec9d44fe1030a4f5.png",
     "static/media/avatar.png": "/trungne/static/media/avatar.63597c145a023c0f64c8.png",
@@ -11,6 +11,7 @@
     "static/media/roboto-all-700-normal.woff": "/trungne/static/media/roboto-all-700-normal.ef6d1d09b20b877fee4e.woff",
     "static/media/roboto-all-400-normal.woff": "/trungne/static/media/roboto-all-400-normal.376ea5d93f71583052f6.woff",
     "static/media/roboto-all-300-normal.woff": "/trungne/static/media/roboto-all-300-normal.8fc5f5f22c9951113696.woff",
+    "static/media/zalo.png": "/trungne/static/media/zalo.5e2a889ab3ed7285dff3.png",
     "static/media/js.png": "/trungne/static/media/js.7f8751632b42a9932c15.png",
     "static/media/roboto-latin-500-normal.woff2": "/trungne/static/media/roboto-latin-500-normal.869888415d0b1a99ae5c.woff2",
     "static/media/mui.png": "/trungne/static/media/mui.8190245bbf581d476fdc.png",
@@ -21,6 +22,7 @@
     "static/media/roboto-cyrillic-ext-500-normal.woff2": "/trungne/static/media/roboto-cyrillic-ext-500-normal.3e748c93fe6a87bdedaa.woff2",
     "static/media/roboto-cyrillic-ext-300-normal.woff2": "/trungne/static/media/roboto-cyrillic-ext-300-normal.12d37040a0160a948ff1.woff2",
     "static/media/roboto-cyrillic-ext-700-normal.woff2": "/trungne/static/media/roboto-cyrillic-ext-700-normal.b816cda3107bb21c87e1.woff2",
+    "static/media/gmail.png": "/trungne/static/media/gmail.a2f2146f929409405da0.png",
     "static/media/roboto-latin-ext-400-normal.woff2": "/trungne/static/media/roboto-latin-ext-400-normal.c3dcdbd5bb4d4af80817.woff2",
     "static/media/roboto-latin-ext-700-normal.woff2": "/trungne/static/media/roboto-latin-ext-700-normal.bcf37d666ce10b3556cd.woff2",
     "static/media/roboto-latin-ext-300-normal.woff2": "/trungne/static/media/roboto-latin-ext-300-normal.a29236e0fc30e8482530.woff2",
@@ -47,12 +49,12 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/trungne/static/media/roboto-greek-ext-700-normal.9674bc0ae12c2551d9d1.woff2",
     "static/media/layer_non_tech_contact.svg": "/trungne/static/media/layer_non_tech_contact.84ccae7b1cc4b47a2fe3.svg",
     "index.html": "/trungne/index.html",
-    "main.840527af.css.map": "/trungne/static/css/main.840527af.css.map",
-    "main.fc46054c.js.map": "/trungne/static/js/main.fc46054c.js.map",
+    "main.7acff24a.css.map": "/trungne/static/css/main.7acff24a.css.map",
+    "main.d8c78d5d.js.map": "/trungne/static/js/main.d8c78d5d.js.map",
     "787.0f3314cf.chunk.js.map": "/trungne/static/js/787.0f3314cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.840527af.css",
-    "static/js/main.fc46054c.js"
+    "static/css/main.7acff24a.css",
+    "static/js/main.d8c78d5d.js"
   ]
 }
