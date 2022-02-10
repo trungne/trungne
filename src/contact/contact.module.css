@@ -22,13 +22,32 @@
 .info .icon-container {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 2em;
 }
 
 .info .text {
   font-size: 1.5em !important;
+  text-align: center;
+}
+
+.find-me {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.find-me .paper {
+  min-width: 50%;
+  padding: 1em 1em 1em 1em
+}
+
+.find-me .text {
+  font-size: 2.3vmax !important;
   text-align: center;
 }
 
