@@ -79,7 +79,7 @@ function InfoCard({ info, link, onCopied }: InfoCardProps) {
                 href: link,
             }).click();
         }
-        else {
+        else if (info) {
             navigator.clipboard.writeText(info.trim().replace(/\s/g, ''));
             onCopied?.call(null);
         }
