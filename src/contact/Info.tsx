@@ -2,6 +2,9 @@ import Typography from "@mui/material/Typography";
 import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
 import globalStyles from "../global.module.css";
 import styles from "./contact.module.css";
 import githubIcon from "./static/github.png";
@@ -10,8 +13,33 @@ import zaloIcon from './static/zalo.png';
 
 import { useState } from "react";
 
+interface SnackBarProps {
+    open: boolean,
+    message: string,
+    onClose: () => void,
+}
+function SnackBarCmp({open, message, onClose} : SnackBarProps) {
+    return (
+        <Snackbar anchorOrigin={{vertical: "top", horizontal: "center"}} open={open} autoHideDuration={4000} onClose={onClose}>
+            <Alert onClose={onClose} severity="info" sx={{ width: '100%' }}>
+                {message}
+            </Alert>
+        </Snackbar>
+    );
+}
+
 export default function Info() {
     const [info, setInfo] = useState<InfoCardProps>({ info: "" });
+    const [openSnackBar, setOpenSnackBar] = useState(false);
+
+    const onCopied = () => {
+        setOpenSnackBar(true);
+    }
+
+    const handleClick = ({info, link } : InfoCardProps) => {
+        setInfo({info, link});
+    }
+
 
     return (
         <div className={`${globalStyles['center-flex']} ${styles['info']}`}>
@@ -20,27 +48,27 @@ export default function Info() {
                     Find me at
                 </Typography>
 
-                {info && <InfoCard info={info.info} link={info.link} />}
+                {info && <InfoCard onCopied={onCopied} info={info.info} link={info.link} />}
             </div>
 
             <div className={styles['icon-container']}>
-                <img onClick={() => { setInfo({ info: "GitHub", link: "https://github.com/trungne" }) }} className={styles['icon']} alt="github icon" src={githubIcon} />
-                <img onClick={() => { setInfo({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} className={styles['icon']} alt="gmail icon" src={gmailIcon} />
-                <img onClick={() => { setInfo({ info: "+84 93 919 8601", link: "" }) }} className={styles['icon']} alt="zalo icon" src={zaloIcon} />
+                <img onClick={() => { handleClick({ info: "GitHub", link: "https://github.com/trungne" }) }} className={styles['icon']} alt="github icon" src={githubIcon} />
+                <img onClick={() => { handleClick({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} className={styles['icon']} alt="gmail icon" src={gmailIcon} />
+                <img onClick={() => { handleClick({ info: "+84 93 919 8601", link: "" }) }} className={styles['icon']} alt="zalo icon" src={zaloIcon} />
             </div>
 
-
+            <SnackBarCmp onClose={() => {setOpenSnackBar(false)}} open={openSnackBar} message={"Copied"} />
         </div>
     )
 }
 interface InfoCardProps {
     info: string,
     link?: string,
-
+    onCopied?: () => void,
 }
-function InfoCard({ info, link }: InfoCardProps) {
+function InfoCard({ info, link, onCopied }: InfoCardProps) {
     const clickToSee = (
-        <span style={{fontStyle: "italic !important"}}>
+        <span style={{ fontStyle: "italic !important" }}>
             Click to reveal
         </span>
     )
@@ -52,11 +80,12 @@ function InfoCard({ info, link }: InfoCardProps) {
             }).click();
         }
         else {
-            navigator.clipboard.writeText(info.trim().replace(/\s/g, ''))
+            navigator.clipboard.writeText(info.trim().replace(/\s/g, ''));
+            onCopied?.call(null);
         }
     }
     return (
-        <Tooltip disableHoverListener={!info} placement='left-start' title={link ? "Click to be redirected" : "Click to copy" }>
+        <Tooltip disableHoverListener={!info} placement='left-start' title={link ? "Click to be redirected" : "Click to copy"}>
             <Paper className={styles['paper']} elevation={3}>
                 <Typography variant="caption" className={`${styles['text']}`}>
                     <div onClick={handleClick}>
