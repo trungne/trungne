@@ -31,6 +31,7 @@
     font-size: 5em;
     flex-grow: 8;
     margin: 1rem 1rem 1rem 1rem;
+    text-align: center;
 }
 
 .header-picture {
@@ -57,7 +58,7 @@
 .experience-card-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    
     flex-wrap: wrap;
     
     gap: 1em;
@@ -66,20 +67,18 @@
 
 .experience-card {
     background-color: rgb(224, 188, 140) !important;
-    min-height: 150px;
-    height: 150px;
-    max-height: 300px;
-    flex-basis: 400px;
     
+    flex-basis: 400px;
     flex-direction: column;
-
+    
 }
 
 .experience-card .experience-card-content{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .chip {
