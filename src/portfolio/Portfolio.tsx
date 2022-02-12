@@ -7,6 +7,7 @@ import FirebaseContext from "../firebase/context";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'; import Typography from "@mui/material/Typography"
 import Box from '@mui/material/Box';
 import Avatar from "@mui/material/Avatar";
+
 import { useContext, useEffect, useState } from "react";
 import githubIcon from "./static/github.png";
 import { chipsWithoutLabels } from "../about/TechChip";
@@ -132,8 +133,8 @@ export default function Portfolio() {
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
       <ProjectShowCase onProjectSelected={onProjectSelected} projects={projects} />
-      
       <Slider images={index === -1 ? [] : projects[index].previews} />
+
 
 
       {index !== (-1)
