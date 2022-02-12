@@ -60,7 +60,7 @@ function MadeWith(props: { imageUrls: string[] }) {
       <Typography variant="subtitle2" sx={{ color: "whitesmoke" }}>
         Made with
       </Typography>
-      <Box display={"flex"} gap={"1em"}>
+      <Box display={"flex"} justifyContent={"center"} gap={"1em"}>
         {props.imageUrls.map(url => {
           return <div key={nanoid()}> {chipsWithoutLabels[url]} </div>;
         })}
