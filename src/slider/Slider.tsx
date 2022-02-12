@@ -47,35 +47,35 @@ export default function Slider({ images }: SliderProps) {
 
     return (
 
-                <div className={styles['slider']}>
-                    <div className={styles['slider-indicators']}>
-                        {images.map((image, idx) => {
-                            const currentIndex = -1 * x / 100;
-                            if (idx === currentIndex) {
-                                return checkedIcon;
-                            }
-
-                            return <FiberManualRecordOutlinedIcon key={image.imgPath} />
-                        })}
-                    </div>
-                    {
-                        sliderArr.map((item, idx) => {
-                            return (
-                                <div
-                                    style={{ transform: `translateX(${x}%)` }}
-                                    key={idx} className={styles['slide']}>
-                                    {item}
-                                </div>
-                            )
-                        })
+        <div id="slider" className={styles['slider']}>
+            <div className={styles['slider-indicators']}>
+                {images.map((image, idx) => {
+                    const currentIndex = -1 * x / 100;
+                    if (idx === currentIndex) {
+                        return checkedIcon;
                     }
 
-                    <IconButton aria-label="go left" className={`${styles['left']} ${styles['icon']}`} onClick={goLeft}>
-                        <ArrowLeftIcon />
-                    </IconButton>
-                    <IconButton aria-label="go right" className={`${styles['right']} ${styles['icon']}`} onClick={goRight}>
-                        <ArrowRightIcon />
-                    </IconButton>
-                </div>
+                    return <FiberManualRecordOutlinedIcon key={image.imgPath} />
+                })}
+            </div>
+            {
+                sliderArr.map((item, idx) => {
+                    return (
+                        <div
+                            style={{ transform: `translateX(${x}%)` }}
+                            key={idx} className={styles['slide']}>
+                            {item}
+                        </div>
+                    )
+                })
+            }
+
+            <IconButton aria-label="go left" className={`${styles['left']} ${styles['icon']}`} onClick={goLeft}>
+                <ArrowLeftIcon />
+            </IconButton>
+            <IconButton aria-label="go right" className={`${styles['right']} ${styles['icon']}`} onClick={goRight}>
+                <ArrowRightIcon />
+            </IconButton>
+        </div>
     )
 }

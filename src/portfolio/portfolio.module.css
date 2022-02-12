@@ -24,6 +24,7 @@
 .project-showcase{
     display: flex;
     width: 100%;
+    
     justify-content: center;
     align-items: center;
 }
@@ -40,7 +41,13 @@
     position: relative;
     text-align: center;
     flex-basis: 300px;
-    
+
+}
+
+@media screen and (max-width: 665px) {
+    .project-card {
+        flex-basis: 120px;
+    }
 }
 
 .project-card:hover {
