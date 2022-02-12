@@ -21,7 +21,9 @@ export default function ProjectCard( {
   
     return (
       <Card onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["project-card"]}>
-        <CardActionArea sx={{ height: "100%" }} onClick={() => { onProjectSelected(index) }}>
+        <CardActionArea sx={{ height: "100%" }} onClick={() => { 
+            window.location.replace("/#my-work")
+            onProjectSelected(index) }}>
           {isHovering && <VisibilityRoundedIcon className={styles['click-to-view']} />}
           <CardMedia src={thumbnail} component="img" />
         </CardActionArea>

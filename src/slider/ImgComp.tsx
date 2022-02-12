@@ -3,11 +3,10 @@ interface ImpCompProps {
     alt: string,
 }
 const imgStyles: React.CSSProperties = {
-    height: "100%",
+    maxWidth: "100%",
+    maxHeight: "100%",
     objectFit: "contain",
 }
 export default function ImgComp({src, alt} : ImpCompProps){
-    return <img src={src} alt={alt} style={imgStyles}>
-
-    </img>
+    return <img src={src} alt={alt} style={imgStyles} />
 }

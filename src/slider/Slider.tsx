@@ -2,6 +2,7 @@ import styles from "./slider.module.scss";
 import { nanoid } from "nanoid";
 
 import { useEffect, useState } from "react";
+
 import IconButton from '@mui/material/IconButton';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -45,35 +46,36 @@ export default function Slider({ images }: SliderProps) {
     }
 
     return (
-        <div className={styles['slider']}>
-            <div className={styles['slider-indicators']}>
-                {images.map((image, idx) => { 
-                    const currentIndex = -1 * x/100;
-                    if (idx === currentIndex) {
-                        return checkedIcon;
-                    }
-                    
-                    return <FiberManualRecordOutlinedIcon key={image.imgPath} />
-                })}
-            </div>
-            {
-                sliderArr.map((item, idx) => {
-                    return (
-                        <div
-                            style={{ transform: `translateX(${x}%)` }}
-                            key={idx} className={styles['slide']}>
-                            {item}
-                        </div>
-                    )
-                })
-            }
 
-            <IconButton aria-label="go left" className={`${styles['left']} ${styles['icon']}`} onClick={goLeft}>
-                <ArrowLeftIcon />
-            </IconButton>
-            <IconButton aria-label="go right" className={`${styles['right']} ${styles['icon']}`} onClick={goRight}>
-                <ArrowRightIcon />
-            </IconButton>
-        </div>
+                <div className={styles['slider']}>
+                    <div className={styles['slider-indicators']}>
+                        {images.map((image, idx) => {
+                            const currentIndex = -1 * x / 100;
+                            if (idx === currentIndex) {
+                                return checkedIcon;
+                            }
+
+                            return <FiberManualRecordOutlinedIcon key={image.imgPath} />
+                        })}
+                    </div>
+                    {
+                        sliderArr.map((item, idx) => {
+                            return (
+                                <div
+                                    style={{ transform: `translateX(${x}%)` }}
+                                    key={idx} className={styles['slide']}>
+                                    {item}
+                                </div>
+                            )
+                        })
+                    }
+
+                    <IconButton aria-label="go left" className={`${styles['left']} ${styles['icon']}`} onClick={goLeft}>
+                        <ArrowLeftIcon />
+                    </IconButton>
+                    <IconButton aria-label="go right" className={`${styles['right']} ${styles['icon']}`} onClick={goRight}>
+                        <ArrowRightIcon />
+                    </IconButton>
+                </div>
     )
 }

@@ -1,7 +1,7 @@
 .portfolio {
     max-width: 100%;
     min-height: 100%;
-        position: relative;
+    position: relative;
 
     background-color: #F79862;
     gap: 1em;
@@ -60,7 +60,9 @@
     min-height: 15vh;
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
 }
 
 .project-description-container .description {

@@ -12,11 +12,10 @@ import '@fontsource/roboto/700.css';
 import Firebase from './firebase/firebase';
 import FirebaseContext from './firebase/context'
 ReactDOM.render(
-  <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
       <App />
     </FirebaseContext.Provider>
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 
