@@ -1,25 +1,20 @@
 import styles from "./portfolio.module.css"
 import globalStyles from "../global.module.css"
-import Typography from "@mui/material/Typography"
-import Backdrop from '@mui/material/Backdrop';
-import MyCarousel from "./Carousel";
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
+import ProjectCard from "./ProjectCard";
 import ProjectPreview from "./Project";
-import Avatar from "@mui/material/Avatar";
 import FirebaseContext from "../firebase/context";
+
+
+import Typography from "@mui/material/Typography"
+import Box from '@mui/material/Box';
+import Avatar from "@mui/material/Avatar";
 import { useContext, useEffect, useState } from "react";
 import githubIcon from "./static/github.png";
 import { chipsWithoutLabels } from "../about/TechChip";
 import { nanoid } from "nanoid";
-import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
-import useComponentVisible from "./useComponentVisible";
 // import anime from "animejs";
 import Slider from "../slider/Slider";
-import useHovering from "../hooks/useHovering";
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
+
 function Header() {
   return (
     <div className={styles["header"]}>
@@ -27,31 +22,6 @@ function Header() {
         My Work
       </Typography>
     </div>
-  )
-}
-
-function ProjectCard(props: {
-  index: number,
-  thumbnail: string,
-  name: string,
-  description: string,
-  onProjectHovered: (i: number) => void,
-  onProjectSelected: (i: number) => void
-}) {
-  const [isHovering, handleMouseOver, handleMouseOut] = useHovering();
-
-  const onMouseOver = () => {
-    handleMouseOver();
-    props.onProjectHovered(props.index);
-  }
-
-  return (
-    <Card onMouseOver={onMouseOver} onMouseLeave={handleMouseOut} className={styles["project-card"]}>
-      <CardActionArea sx={{ height: "100%" }} onClick={() => { props.onProjectSelected(props.index) }}>
-        {isHovering && <VisibilityRoundedIcon className={styles['click-to-view']} />}
-        <CardMedia src={props.thumbnail} component="img" alt={props.description} />
-      </CardActionArea>
-    </Card>
   )
 }
 
@@ -89,48 +59,27 @@ function ProjectDescription({ description, role }: ProjectDescriptionProps) {
   )
 }
 
-function ProjectShowCase(props: {
+interface ProjectShowCaseProps {
   projects: ProjectPreview[],
-  onProjectHovered: (i: number) => void,
-}) {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
-  const [ref, isComponentVisible, setIsComponentVisible] = useComponentVisible(false);
-
-  const handleProjectSelected = (index: number) => {
-    setCurrentProjectIndex(index);
-    setIsComponentVisible(true);
-  }
+  onProjectSelected: (i: number) => void,
+}
+function ProjectShowCase( {
+  projects,
+  onProjectSelected} : ProjectShowCaseProps) {
 
   return (
     <div className={styles["project-showcase"]}>
-      {props.projects.length > 0 && <Box className={styles["project-box"]}>
-        {props.projects.map((project, index) => {
+      {projects.length > 0 && <Box className={styles["project-box"]}>
+        {projects.map((project, index) => {
           return (<ProjectCard
-            onProjectHovered={props.onProjectHovered}
-            onProjectSelected={handleProjectSelected}
+            onProjectSelected={onProjectSelected}
             key={index}
             index={index}
-            name={project.name}
             thumbnail={project.thumbnail}
-            description={project.description} />);
+            />);
         })}
       </Box>
-
       }
-
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={isComponentVisible}
-      >
-        {props.projects && props.projects.length > 0 &&
-          <div ref={ref} className={globalStyles["center-flex"] + " " + styles["project-info"]}>
-            <MyCarousel images={props.projects[currentProjectIndex].previews} />
-            <MadeWith imageUrls={props.projects[currentProjectIndex].madeWith} />
-            <ExternalLink githubLink={props.projects[currentProjectIndex].githubLink} />
-          </div>
-        }
-      </Backdrop>
-
     </div>
   )
 }
@@ -142,9 +91,9 @@ function ExternalLink(props: { githubLink: string, webLink?: string }) {
         <Avatar alt="github link" src={githubIcon} />
       </a>
 
-      {props.webLink && <a href={props.webLink} target="_blank" rel="noreferrer">
+      {/* {props.webLink && <a href={props.webLink} target="_blank" rel="noreferrer">
         <LinkOutlinedIcon sx={{ color: "whitesmoke" }} fontSize="large" />
-      </a>}
+      </a>} */}
     </div>
   )
 }
@@ -152,10 +101,12 @@ function ExternalLink(props: { githubLink: string, webLink?: string }) {
 export default function Portfolio() {
   const firebaseContext = useContext(FirebaseContext);
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [description, setDescription] = useState("Hover/Click on a project");
   const [role, setRole] = useState(" ");
 
-  const onProjectHovered = (i: number) => {
+  const onProjectSelected = (i: number) => {
+    setCurrentProjectIndex(i);
     setDescription(projects[i].description);
     setRole(projects[i].role);
   }
@@ -174,10 +125,10 @@ export default function Portfolio() {
   return (
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
-      {projects.length > 0 && <Slider images={projects[2].previews} />}
+      {projects.length > 0 && <Slider images={projects[currentProjectIndex].previews} />}
       
       <ProjectDescription role={role} description={description} />
-      <ProjectShowCase onProjectHovered={onProjectHovered} projects={projects} />
+      <ProjectShowCase onProjectSelected={onProjectSelected} projects={projects} />
     </div>
   )
 }

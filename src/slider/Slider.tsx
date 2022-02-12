@@ -1,17 +1,28 @@
-import { useState } from "react";
 import styles from "./slider.module.scss";
+import { nanoid } from "nanoid";
+
+import { useEffect, useState } from "react";
+import IconButton from '@mui/material/IconButton';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
 import ImgComp from "./ImgComp";
 import MyImage from "../portfolio/MyImage";
+const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
 interface SliderProps {
     images: MyImage[],
 }
 
-export default function Slider({images} : SliderProps) {
+export default function Slider({ images }: SliderProps) {
     const sliderArr = images.map((image, idx) => {
         return <ImgComp src={image.imgPath} alt={image.label} key={idx} />
     })
     const [x, setX] = useState(0);
+    useEffect(() => {
+        setX(0);
+    }, [images])
 
 
     const goLeft = () => {
@@ -19,14 +30,14 @@ export default function Slider({images} : SliderProps) {
             if (x === 0) {
                 return -100 * (sliderArr.length - 1);
             }
-            
+
             return prev + 100;
         })
     }
 
     const goRight = () => {
         setX(prev => {
-            if (x === -100 * (sliderArr.length - 1)){
+            if (x === -100 * (sliderArr.length - 1)) {
                 return 0;
             }
             return prev - 100;
@@ -35,6 +46,16 @@ export default function Slider({images} : SliderProps) {
 
     return (
         <div className={styles['slider']}>
+            <div className={styles['slider-indicators']}>
+                {images.map((image, idx) => { 
+                    const currentIndex = -1 * x/100;
+                    if (idx === currentIndex) {
+                        return checkedIcon;
+                    }
+                    
+                    return <FiberManualRecordOutlinedIcon key={image.imgPath} />
+                })}
+            </div>
             {
                 sliderArr.map((item, idx) => {
                     return (
@@ -46,8 +67,13 @@ export default function Slider({images} : SliderProps) {
                     )
                 })
             }
-            <button className={styles['left']} onClick={goLeft}>left</button>
-            <button className={styles['right']} onClick={goRight}>right</button>
+
+            <IconButton aria-label="go left" className={`${styles['left']} ${styles['icon']}`} onClick={goLeft}>
+                <ArrowLeftIcon />
+            </IconButton>
+            <IconButton aria-label="go right" className={`${styles['right']} ${styles['icon']}`} onClick={goRight}>
+                <ArrowRightIcon />
+            </IconButton>
         </div>
     )
 }
