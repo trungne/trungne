@@ -1,7 +1,8 @@
 .portfolio {
     max-width: 100%;
     min-height: 100%;
-    
+        position: relative;
+
     background-color: #F79862;
     gap: 1em;
     flex-direction: column;

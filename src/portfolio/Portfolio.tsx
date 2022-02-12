@@ -17,6 +17,7 @@ import { nanoid } from "nanoid";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import useComponentVisible from "./useComponentVisible";
 // import anime from "animejs";
+import Slider from "../slider/Slider";
 import useHovering from "../hooks/useHovering";
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 function Header() {
@@ -173,6 +174,8 @@ export default function Portfolio() {
   return (
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
+      {projects.length > 0 && <Slider images={projects[2].previews} />}
+      
       <ProjectDescription role={role} description={description} />
       <ProjectShowCase onProjectHovered={onProjectHovered} projects={projects} />
     </div>
