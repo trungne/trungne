@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/trungne/static/css/main.8f8e8ee6.css",
-    "main.js": "/trungne/static/js/main.82cb4054.js",
+    "main.css": "/trungne/static/css/main.efd54133.css",
+    "main.js": "/trungne/static/js/main.f99a3b65.js",
     "static/js/787.0f3314cf.chunk.js": "/trungne/static/js/787.0f3314cf.chunk.js",
     "static/media/profile-pic.png": "/trungne/static/media/profile-pic.43e7ec9d44fe1030a4f5.png",
     "static/media/avatar.png": "/trungne/static/media/avatar.63597c145a023c0f64c8.png",
@@ -49,12 +49,12 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/trungne/static/media/roboto-greek-ext-700-normal.9674bc0ae12c2551d9d1.woff2",
     "static/media/layer_non_tech_contact.svg": "/trungne/static/media/layer_non_tech_contact.84ccae7b1cc4b47a2fe3.svg",
     "index.html": "/trungne/index.html",
-    "main.8f8e8ee6.css.map": "/trungne/static/css/main.8f8e8ee6.css.map",
-    "main.82cb4054.js.map": "/trungne/static/js/main.82cb4054.js.map",
+    "main.efd54133.css.map": "/trungne/static/css/main.efd54133.css.map",
+    "main.f99a3b65.js.map": "/trungne/static/js/main.f99a3b65.js.map",
     "787.0f3314cf.chunk.js.map": "/trungne/static/js/787.0f3314cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8f8e8ee6.css",
-    "static/js/main.82cb4054.js"
+    "static/css/main.efd54133.css",
+    "static/js/main.f99a3b65.js"
   ]
 }
