@@ -122,6 +122,11 @@ export default function Portfolio() {
     if (firebaseContext) {
       firebaseContext.getProjects().then(
         projects => {
+          projects.forEach(project => {
+            project.previews.forEach(preview => {
+              new Image().src = preview.imgPath;
+            })
+          })
           setProjects(projects);
         }
       )
@@ -134,9 +139,6 @@ export default function Portfolio() {
       <Header />
       <ProjectShowCase onProjectSelected={onProjectSelected} projects={projects} />
       <Slider images={index === -1 ? [] : projects[index].previews} />
-
-
-
       {index !== (-1)
         && <ProjectDescription
           madeWith={projects[index].madeWith}

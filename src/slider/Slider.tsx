@@ -1,6 +1,5 @@
 import styles from "./slider.module.scss";
 import { nanoid } from "nanoid";
-
 import { useEffect, useState } from "react";
 
 import IconButton from '@mui/material/IconButton';
@@ -11,25 +10,26 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 
 import ImgComp from "./ImgComp";
 import MyImage from "../portfolio/MyImage";
+
 const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
 interface SliderProps {
     images: MyImage[],
 }
 
 export default function Slider({ images }: SliderProps) {
-    const sliderArr = images.map((image, idx) => {
-        return <ImgComp src={image.imgPath} alt={image.label} key={idx} />
-    })
     const [x, setX] = useState(0);
+    const [opacity, setOpacity] = useState(0);
+
     useEffect(() => {
         setX(0);
+        setOpacity(0);
     }, [images])
 
 
     const goLeft = () => {
         setX(prev => {
             if (x === 0) {
-                return -100 * (sliderArr.length - 1);
+                return -100 * (images.length - 1);
             }
 
             return prev + 100;
@@ -38,7 +38,7 @@ export default function Slider({ images }: SliderProps) {
 
     const goRight = () => {
         setX(prev => {
-            if (x === -100 * (sliderArr.length - 1)) {
+            if (x === -100 * (images.length - 1)) {
                 return 0;
             }
             return prev - 100;
@@ -46,8 +46,9 @@ export default function Slider({ images }: SliderProps) {
     }
 
     return (
-
-        <div id="slider" className={styles['slider']}>
+        <div
+            id="slider"
+            className={styles['slider']}>
             <div className={styles['slider-indicators']}>
                 {images.map((image, idx) => {
                     const currentIndex = -1 * x / 100;
@@ -59,12 +60,14 @@ export default function Slider({ images }: SliderProps) {
                 })}
             </div>
             {
-                sliderArr.map((item, idx) => {
+                images.map((image, idx) => {
                     return (
-                        <div
-                            style={{ transform: `translateX(${x}%)` }}
+                        <div onClick={goRight}
+                            style={{ opacity: opacity, transform: `translateX(${x}%)` }}
                             key={idx} className={styles['slide']}>
-                            {item}
+                            <ImgComp onLoad={() => {
+                                setOpacity(1)
+                                }} src={image.imgPath} alt={image.label} key={idx} />
                         </div>
                     )
                 })
@@ -77,5 +80,39 @@ export default function Slider({ images }: SliderProps) {
                 <ArrowRightIcon />
             </IconButton>
         </div>
+
     )
 }
+
+
+// useEffect(() => {
+  //   anime({
+  //     targets: "#blob1",
+
+  //     translateX: function() {
+  //       return anime.random(0, 270);
+  //     },
+  //     translateY: function() {
+  //       return anime.random(0, 270);
+  //     },
+  //     direction: 'alternate',
+
+  //     easing: 'linear',
+  //     loop: true,
+  //     duration: 300,
+  //   });
+  //   anime({
+  //     targets: "#blob2",
+
+  //     translateX: function() {
+  //       return anime.random(0, 600);
+  //     },
+  //     translateY: function() {
+  //       return anime.random(0, 600);
+  //     },
+  //     direction: 'alternate',
+  //     easing: 'linear',
+  //     loop: true,
+  //     duration: 3000,
+  //   });
+  // }, [])
