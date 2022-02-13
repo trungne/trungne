@@ -1,3 +1,4 @@
+
 interface ImpCompProps {
     src: string,
     alt: string,
@@ -9,5 +10,5 @@ const imgStyles: React.CSSProperties = {
     objectFit: "contain",
 }
 export default function ImgComp({src, alt, onLoad} : ImpCompProps){
-    return <img onLoad={onLoad} src={src} alt={alt} style={imgStyles} />
+    return <img onChange={onLoad} onLoad={onLoad} src={src} alt={alt} style={imgStyles} />
 }

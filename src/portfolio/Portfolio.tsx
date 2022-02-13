@@ -122,11 +122,6 @@ export default function Portfolio() {
     if (firebaseContext) {
       firebaseContext.getProjects().then(
         projects => {
-          projects.forEach(project => {
-            project.previews.forEach(preview => {
-              new Image().src = preview.imgPath;
-            })
-          })
           setProjects(projects);
         }
       )

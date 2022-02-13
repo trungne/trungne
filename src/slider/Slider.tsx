@@ -11,6 +11,8 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import ImgComp from "./ImgComp";
 import MyImage from "../portfolio/MyImage";
 
+import useStateCallback from "../hooks/useStateCallBack";
+
 const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
 interface SliderProps {
     images: MyImage[],
@@ -18,13 +20,12 @@ interface SliderProps {
 
 export default function Slider({ images }: SliderProps) {
     const [x, setX] = useState(0);
-    const [opacity, setOpacity] = useState(0);
+    const [opacity, setOpacity] = useStateCallback(0);
 
     useEffect(() => {
         setX(0);
         setOpacity(0);
     }, [images])
-
 
     const goLeft = () => {
         setX(prev => {
@@ -65,9 +66,11 @@ export default function Slider({ images }: SliderProps) {
                         <div onClick={goRight}
                             style={{ opacity: opacity, transform: `translateX(${x}%)` }}
                             key={idx} className={styles['slide']}>
-                            <ImgComp onLoad={() => {
-                                setOpacity(1)
-                                }} src={image.imgPath} alt={image.label} key={idx} />
+                            <ImgComp
+                                onLoad={() => {
+                                    setOpacity(1);
+                                }} 
+                                src={image.imgPath} alt={image.label} key={idx} />
                         </div>
                     )
                 })
