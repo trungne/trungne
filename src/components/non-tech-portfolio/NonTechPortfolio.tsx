@@ -7,7 +7,7 @@ import LinkSharpIcon from '@mui/icons-material/LinkSharp';
 import classroomImg from "./static/classroom.jpg";
 import videoImg from "./static/naune.jpg";
 
-import useHovering from "../hooks/useHovering";
+import useHovering from "../../hooks/useHovering";
 
 export default function NonTechPortfolio() {
     return (

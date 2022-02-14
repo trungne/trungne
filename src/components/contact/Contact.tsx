@@ -1,7 +1,7 @@
 import globalStyles from "../global.module.css";
 import styles from "./contact.module.css";
 import Eyes from "./Eyes";
-import useHovering from "../hooks/useHovering";
+import useHovering from "../../hooks/useHovering";
 import Info from "./Info";
 import SendEmail from "./SendEmail";
 

@@ -1,10 +1,10 @@
 import globalStyles from "./global.module.css";
 
-import Introduction from './introduction/Introduction';
-import Portfolio from './portfolio/Portfolio';
-import About from './about/About';
-import NonTechPortfolio from './non-tech-portfolio/NonTechPortfolio';
-import Contact from './contact/Contact';
+import Introduction from './components/introduction/Introduction';
+import Portfolio from './components/portfolio/Portfolio';
+import About from './components/about/About';
+import NonTechPortfolio from './components/non-tech-portfolio/NonTechPortfolio';
+import Contact from './components/contact/Contact';
 
 
 function App() {

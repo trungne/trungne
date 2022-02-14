@@ -3,7 +3,7 @@ import globalStyles from "../global.module.css";
 import { useEffect, useState } from "react";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MyImage from "../data-models/MyImage";
+import MyImage from "../../data-models/MyImage";
 import { nanoid } from "nanoid";
 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
