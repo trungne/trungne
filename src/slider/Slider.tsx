@@ -9,7 +9,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
 import ImgComp from "./ImgComp";
-import MyImage from "../portfolio/MyImage";
+import MyImage from "../data-models/MyImage";
 
 import useStateCallback from "../hooks/useStateCallBack";
 

@@ -3,8 +3,8 @@ import { FirebaseOptions } from 'firebase/app';
 import { Firestore, getFirestore } from "firebase/firestore"
 
 import { collection, query, getDocs } from "firebase/firestore";
-import MyImage from '../portfolio/MyImage';
-import ProjectPreview from '../portfolio/Project';
+import MyImage from '../data-models/MyImage';
+import ProjectPreview from '../data-models/Project';
 
 const config: FirebaseOptions = {
   apiKey: process.env.REACT_APP_API_KEY,
