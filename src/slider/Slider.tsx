@@ -13,19 +13,75 @@ import MyImage from "../portfolio/MyImage";
 
 import useStateCallback from "../hooks/useStateCallBack";
 
+import anime from "animejs";
+
 const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
 interface SliderProps {
     images: MyImage[],
 }
 
+
+const fadeOut   = anime({
+    targets: "." + styles['slide'],
+    opacity: 1,
+    easing: 'linear',
+    duration: 250,
+    begin: () => {
+        console.log("Begin fade out");
+    },
+    complete: () => {
+        console.log("finish fade out");
+    },
+    autoplay: false,
+});
+
+const fadeIn   = anime({
+    targets: "." + styles['slide'],
+    opacity: 0,
+    easing: 'linear',
+    duration: 250,
+    begin: () => {
+        console.log("Begin fade in");
+    },
+    complete: () => {
+        console.log("finish fade in");
+        fadeOut.play();
+    },
+    autoplay: false,
+});
+
+
+
+
+
 export default function Slider({ images }: SliderProps) {
     const [x, setX] = useState(0);
-    const [opacity, setOpacity] = useStateCallback(0);
+    // const [opacity, setOpacity] = useStateCallback(0);
+    const [opacity, setOpacity] = useState(0);
+
+    const [imageCount, setImageCount] = useState(0);
+
 
     useEffect(() => {
         setX(0);
+        setImageCount(0);
         setOpacity(0);
     }, [images])
+
+    useEffect(() => {
+        // finish loading all images
+        if (imageCount === images.length && images.length > 0) {
+            setOpacity(1);
+        }
+    }, [imageCount])
+
+
+    const handleOnLoad = () => {
+        setImageCount(prev => {
+            return prev + 1;
+        })
+    }
+
 
     const goLeft = () => {
         setX(prev => {
@@ -67,9 +123,8 @@ export default function Slider({ images }: SliderProps) {
                             style={{ opacity: opacity, transform: `translateX(${x}%)` }}
                             key={idx} className={styles['slide']}>
                             <ImgComp
-                                onLoad={() => {
-                                    setOpacity(1);
-                                }} 
+                                className={styles['slide-img']}
+                                onLoad={handleOnLoad}
                                 src={image.imgPath} alt={image.label} key={idx} />
                         </div>
                     )
