@@ -3,16 +3,13 @@ import globalStyles from "../global.module.css"
 import ProjectCard from "./ProjectCard";
 import ProjectPreview from "./Project";
 import FirebaseContext from "../firebase/context";
+import MadeWith from "./MadeWith";
+import ExternalLink from "./ExternalLink";
 
-import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'; import Typography from "@mui/material/Typography"
+import Typography from "@mui/material/Typography"
 import Box from '@mui/material/Box';
-import Avatar from "@mui/material/Avatar";
 
 import { useContext, useEffect, useState } from "react";
-import githubIcon from "./static/github.png";
-import { chipsWithoutLabels } from "../about/TechChip";
-import { nanoid } from "nanoid";
-// import anime from "animejs";
 import Slider from "../slider/Slider";
 
 function Header() {
@@ -21,24 +18,6 @@ function Header() {
       <Typography variant="h2" className={styles["text"]}>
         My Work
       </Typography>
-    </div>
-  )
-}
-
-interface MadeWithProps {
-  madeWith: string[],
-}
-function MadeWith({ madeWith }: MadeWithProps) {
-  return (
-    <div className={globalStyles["center-flex"] + " " + styles["made-with"]}>
-      <Typography variant="subtitle2" sx={{ color: "whitesmoke" }}>
-        Made with
-      </Typography>
-      <Box display={"flex"} justifyContent={"center"} gap={"1em"}>
-        {madeWith.map(url => {
-          return <div key={nanoid()}> {chipsWithoutLabels[url]} </div>;
-        })}
-      </Box>
     </div>
   )
 }
@@ -87,24 +66,6 @@ function ProjectShowCase({
         })}
       </Box>
       }
-    </div>
-  )
-}
-
-interface ExternalLinkProps {
-  githubLink: string,
-  webLink?: string,
-}
-function ExternalLink({ githubLink, webLink }: ExternalLinkProps) {
-  return (
-    <div className={globalStyles["center-flex"] + " " + styles["external-link"]}>
-      <a href={githubLink} target="_blank" rel="noreferrer">
-        <Avatar alt="github link" src={githubIcon} />
-      </a>
-
-      {webLink && <a href={webLink} target="_blank" rel="noreferrer">
-        <LinkOutlinedIcon sx={{ color: "whitesmoke" }} fontSize="large" />
-      </a>}
     </div>
   )
 }
