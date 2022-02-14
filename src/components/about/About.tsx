@@ -1,5 +1,5 @@
 import styles from "./about.module.css";
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 import Typography from "@mui/material/Typography"
 import profilePicture from "./static/profile-pic.png";
 import Divider from "@mui/material/Divider";

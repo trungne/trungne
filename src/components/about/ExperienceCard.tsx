@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { cloneElement } from "react";
 
 import styles from "./about.module.css";
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 
 export default function ExperienceCard(props: { name: string, children: JSX.Element[] }) {
     return (

@@ -1,4 +1,4 @@
-import globalStyles from "../global.module.css"
+import globalStyles from "../../global.module.css"
 import styles from "./portfolio.module.css"
 import Avatar from "@mui/material/Avatar";
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'; 

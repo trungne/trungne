@@ -2,7 +2,7 @@
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 
 export type Star = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5
 const starColor = { color: "color: rgb(253, 253, 96)" }

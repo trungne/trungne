@@ -17,6 +17,11 @@
 .info .icon {
   height: 5em;
   transition: height 300ms;
+  cursor: pointer;
+}
+
+.info .paper {
+  cursor: pointer;
 }
 
 .icon:hover {

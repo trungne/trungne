@@ -1,5 +1,5 @@
 import styles from "./nontech.module.css";
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 import Typography from "@mui/material/Typography";
 import Fab from '@mui/material/Fab';
 import LinkSharpIcon from '@mui/icons-material/LinkSharp';

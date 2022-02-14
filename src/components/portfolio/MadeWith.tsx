@@ -1,4 +1,4 @@
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 import styles from "./portfolio.module.css";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";

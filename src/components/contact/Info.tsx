@@ -5,7 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 import styles from "./contact.module.css";
 import githubIcon from "./static/github.png";
 import gmailIcon from './static/gmail.png';
@@ -66,12 +66,14 @@ interface InfoCardProps {
     link?: string,
     onCopied?: () => void,
 }
+
+const clickToSee = (
+    <span style={{ fontStyle: "italic !important" }}>
+        Click icon to reveal 
+    </span>
+)
 function InfoCard({ info, link, onCopied }: InfoCardProps) {
-    const clickToSee = (
-        <span style={{ fontStyle: "italic !important" }}>
-            Click to reveal
-        </span>
-    )
+    
     const handleClick = () => {
         if (link) {
             Object.assign(document.createElement('a'), {

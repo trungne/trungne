@@ -1,5 +1,5 @@
 import styles from "./portfolio.module.css"
-import globalStyles from "../global.module.css"
+import globalStyles from "../../global.module.css"
 import ProjectCard from "./ProjectCard";
 import ProjectPreview from "../../data-models/Project";
 import FirebaseContext from "../../firebase/context";

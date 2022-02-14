@@ -1,5 +1,5 @@
 import styles from "./introduction.module.css";
-import globalStyles from "../global.module.css"
+import globalStyles from "../../global.module.css"
 import Avatar from '@mui/material/Avatar';
 import myAvatar from "./static/avatar.png";
 import Box from '@mui/material/Box';

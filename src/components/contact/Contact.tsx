@@ -1,9 +1,11 @@
-import globalStyles from "../global.module.css";
+import globalStyles from "../../global.module.css";
 import styles from "./contact.module.css";
 import Eyes from "./Eyes";
 import useHovering from "../../hooks/useHovering";
 import Info from "./Info";
 import SendEmail from "./SendEmail";
+import Footer from "./Footer";
+import Divider from '@mui/material/Divider';
 
 function Wave() {
     return (<div className={styles["wave"]}>
@@ -32,6 +34,9 @@ export default function Contact() {
             <div onMouseOver={handleMouseOverEmail} onMouseLeave={handleMouseOutEmail}>
                 <SendEmail />
             </div>
+
+            
+            <Footer />
 
         </div>
     )
