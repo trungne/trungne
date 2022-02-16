@@ -8,6 +8,7 @@ import ExternalLink from "./ExternalLink";
 
 import Typography from "@mui/material/Typography"
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 
 import { useContext, useEffect, useState } from "react";
 import Slider from "../slider/Slider";
@@ -38,8 +39,23 @@ function ProjectDescription({ description, role, madeWith, githubLink }: Project
       <Typography className={`${globalStyles['white-text']} ${styles['role']}`} variant="subtitle1">
         {role}
       </Typography>
-      <MadeWith madeWith={madeWith} />
-      <ExternalLink githubLink={githubLink} />
+      <div style={{
+        margin: '1em 1em 1em 1em',
+        padding: '1em 1em 1em 1em',
+        display: 'flex',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '1em',
+        backgroundColor: "rgba(220, 220, 220, 0.5)",
+        borderRadius: '10px',
+
+      }}>
+        <MadeWith madeWith={madeWith} />
+        <Divider orientation="vertical" flexItem />
+        <ExternalLink githubLink={githubLink} />
+      </div>
+
     </div>
 
   )

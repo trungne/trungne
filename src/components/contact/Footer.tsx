@@ -22,7 +22,6 @@ export default function Footer(){
             <MadeWith madeWith={['react', 'mui', 'firebase']} />
             <Divider orientation="vertical" flexItem/>
             <ExternalLink githubLink="https://github.com/trungne/trungne"/>
-
         </div>
     )
 }
