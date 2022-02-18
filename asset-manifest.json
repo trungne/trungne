@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/trungne/static/css/main.7e58dedf.css",
-    "main.js": "/trungne/static/js/main.6b9edbf0.js",
+    "main.js": "/trungne/static/js/main.ed8a711b.js",
     "static/js/787.0f3314cf.chunk.js": "/trungne/static/js/787.0f3314cf.chunk.js",
     "static/media/profile-pic.png": "/trungne/static/media/profile-pic.43e7ec9d44fe1030a4f5.png",
-    "static/media/avatar.png": "/trungne/static/media/avatar.63597c145a023c0f64c8.png",
+    "static/media/avatar.png": "/trungne/static/media/avatar.360199515cf9cf173617.png",
     "static/media/classroom.jpg": "/trungne/static/media/classroom.e8b46c19953425995bf5.jpg",
     "static/media/naune.jpg": "/trungne/static/media/naune.64ccb28ca3e33a1b7102.jpg",
     "static/media/roboto-all-500-normal.woff": "/trungne/static/media/roboto-all-500-normal.52cb737b682eb9661ee1.woff",
@@ -50,11 +50,11 @@
     "static/media/layer_non_tech_contact.svg": "/trungne/static/media/layer_non_tech_contact.84ccae7b1cc4b47a2fe3.svg",
     "index.html": "/trungne/index.html",
     "main.7e58dedf.css.map": "/trungne/static/css/main.7e58dedf.css.map",
-    "main.6b9edbf0.js.map": "/trungne/static/js/main.6b9edbf0.js.map",
+    "main.ed8a711b.js.map": "/trungne/static/js/main.ed8a711b.js.map",
     "787.0f3314cf.chunk.js.map": "/trungne/static/js/787.0f3314cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7e58dedf.css",
-    "static/js/main.6b9edbf0.js"
+    "static/js/main.ed8a711b.js"
   ]
 }
