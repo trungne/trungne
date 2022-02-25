@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trungne/static/css/main.7e58dedf.css",
-    "main.js": "/trungne/static/js/main.ed8a711b.js",
+    "main.js": "/trungne/static/js/main.bb1dd921.js",
     "static/js/787.0f3314cf.chunk.js": "/trungne/static/js/787.0f3314cf.chunk.js",
     "static/media/profile-pic.png": "/trungne/static/media/profile-pic.43e7ec9d44fe1030a4f5.png",
     "static/media/avatar.png": "/trungne/static/media/avatar.360199515cf9cf173617.png",
@@ -50,11 +50,11 @@
     "static/media/layer_non_tech_contact.svg": "/trungne/static/media/layer_non_tech_contact.84ccae7b1cc4b47a2fe3.svg",
     "index.html": "/trungne/index.html",
     "main.7e58dedf.css.map": "/trungne/static/css/main.7e58dedf.css.map",
-    "main.ed8a711b.js.map": "/trungne/static/js/main.ed8a711b.js.map",
+    "main.bb1dd921.js.map": "/trungne/static/js/main.bb1dd921.js.map",
     "787.0f3314cf.chunk.js.map": "/trungne/static/js/787.0f3314cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7e58dedf.css",
-    "static/js/main.ed8a711b.js"
+    "static/js/main.bb1dd921.js"
   ]
 }
