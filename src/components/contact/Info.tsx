@@ -18,9 +18,9 @@ interface SnackBarProps {
     message: string,
     onClose: () => void,
 }
-function SnackBarCmp({open, message, onClose} : SnackBarProps) {
+function SnackBarCmp({ open, message, onClose }: SnackBarProps) {
     return (
-        <Snackbar anchorOrigin={{vertical: "top", horizontal: "center"}} open={open} autoHideDuration={4000} onClose={onClose}>
+        <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={open} autoHideDuration={4000} onClose={onClose}>
             <Alert onClose={onClose} severity="info" sx={{ width: '100%' }}>
                 {message}
             </Alert>
@@ -36,8 +36,8 @@ export default function Info() {
         setOpenSnackBar(true);
     }
 
-    const handleClick = ({info, link } : InfoCardProps) => {
-        setInfo({info, link});
+    const handleClick = ({ info, link }: InfoCardProps) => {
+        setInfo({ info, link });
     }
 
 
@@ -52,12 +52,20 @@ export default function Info() {
             </div>
 
             <div className={styles['icon-container']}>
-                <img onClick={() => { handleClick({ info: "GitHub", link: "https://github.com/trungne" }) }} className={styles['icon']} alt="github icon" src={githubIcon} />
-                <img onClick={() => { handleClick({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} className={styles['icon']} alt="gmail icon" src={gmailIcon} />
-                <img onClick={() => { handleClick({ info: "+84 93 919 8601", link: "" }) }} className={styles['icon']} alt="zalo icon" src={zaloIcon} />
+                <div className={styles['icon']} >
+                    <img onClick={() => { handleClick({ info: "GitHub", link: "https://github.com/trungne" }) }} alt="github icon" src={githubIcon} />
+                </div>
+
+                <div className={styles['icon']} >
+                    <img onClick={() => { handleClick({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} alt="gmail icon" src={gmailIcon} />
+                </div>
+
+                <div className={styles['icon']} >
+                    <img onClick={() => { handleClick({ info: "+84 93 919 8601", link: "" }) }} alt="zalo icon" src={zaloIcon} />
+                </div>
             </div>
 
-            <SnackBarCmp onClose={() => {setOpenSnackBar(false)}} open={openSnackBar} message={"Copied"} />
+            <SnackBarCmp onClose={() => { setOpenSnackBar(false) }} open={openSnackBar} message={"Copied"} />
         </div>
     )
 }
@@ -69,11 +77,11 @@ interface InfoCardProps {
 
 const clickToSee = (
     <span style={{ fontStyle: "italic !important" }}>
-        Click icon to reveal 
+        Click icon to reveal
     </span>
 )
 function InfoCard({ info, link, onCopied }: InfoCardProps) {
-    
+
     const handleClick = () => {
         if (link) {
             Object.assign(document.createElement('a'), {

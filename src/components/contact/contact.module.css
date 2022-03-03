@@ -9,31 +9,42 @@
 }
 
 .info {
+  position: relative;
   width: 100%;
   gap: 1em;
   flex-direction: column;
 }
 
 .info .icon {
+  position: relative;
   height: 5em;
-  transition: height 300ms;
-  cursor: pointer;
+  width: 5em;
+
+  cursor: pointer;  
+  display: flex;
+}
+
+.info .icon img {
+  height: 100%;
+  width: 100%;
+  
+  object-fit: contain;
+  transition: all 300ms ease-out;
+}
+
+.icon img:hover {
+  height: 120%;
+  
 }
 
 .info .paper {
   cursor: pointer;
 }
 
-.icon:hover {
-  height: 6em;
-}
-
 .info .icon-container {
   padding: 1em 1em 1em 1em;
-  width: 100%;
   height: 6em;
-
-
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,9 +80,8 @@
 
 .eyes{
     display: flex;
-    width: 100%;
-    min-height: 25vh;
-    
+    height: 25vh;
+    max-height: 50vh;
     text-align: center;
     
   }
