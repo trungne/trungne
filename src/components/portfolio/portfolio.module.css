@@ -24,7 +24,6 @@
 .project-showcase{
     display: flex;
     width: 100%;
-    
     justify-content: center;
     align-items: center;
 }
@@ -40,7 +39,8 @@
 .project-card {
     position: relative;
     text-align: center;
-    flex-basis: 300px;
+    aspect-ratio: 1/1;
+    flex-basis: 10%;
 
 }
 
