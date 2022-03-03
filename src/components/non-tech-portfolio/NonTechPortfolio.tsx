@@ -27,7 +27,7 @@ function Header() {
         <div className={styles["header"] + " " + globalStyles["center-flex"]}>
             <Typography variant="subtitle2" className={globalStyles["white-text"] + " " + styles["header-text"]}>
                 Besides coding, I have been teaching Communicative English since 2016 and achieved an 8.0 IELTS in 2019.
-                I also work in Equitable Learning Services at RMIT Univeristy as a Student Aid to help people with learning difficulties take notes in lectures.
+                I also work in Equitable Learning Services at RMIT University as a Student Aid to help people with learning difficulties take notes in lectures.
                 In my free time, I enjoy running and making informative videos.
             </Typography>
         </div>
