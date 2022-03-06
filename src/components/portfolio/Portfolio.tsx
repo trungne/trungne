@@ -12,6 +12,7 @@ import Divider from '@mui/material/Divider';
 
 import { Fragment, useContext, useEffect, useState } from "react";
 import Slider from "../slider/Slider";
+import { Fade } from "react-awesome-reveal";
 
 function Header() {
   return (
@@ -71,18 +72,26 @@ function ProjectShowCase({
 
   return (
     <div className={styles["project-showcase"]}>
-      {projects.length > 0 && <Box className={styles["project-box"]}>
-        {projects.map((project, index) => {
-          return (<ProjectCard
-            onProjectSelected={onProjectSelected}
-            key={index}
-            index={index}
-            thumbnail={project.thumbnail}
-          />);
-        })}
-      </Box>
+
+      {projects.length > 0 &&
+        <Box className={styles["project-box"]}>
+          <Fade triggerOnce damping={0.1} cascade>
+            {projects.map((project, index) => {
+              return (<ProjectCard
+                onProjectSelected={onProjectSelected}
+                key={index}
+                index={index}
+                thumbnail={project.thumbnail}
+              />);
+            })}
+          </Fade>
+        </Box>
+
       }
-    </div>
+
+
+
+    </div >
   )
 }
 
@@ -108,8 +117,12 @@ export default function Portfolio() {
 
   return (
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
-      <Header />
+      <Fade damping={0.1}>
+        <Header />
+      </Fade>
+
       <ProjectShowCase onProjectSelected={onProjectSelected} projects={projects} />
+
       {projects.length > 0 && <Fragment>
         <Slider images={projects[index].previews} />
         <ProjectDescription
