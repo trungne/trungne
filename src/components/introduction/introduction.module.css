@@ -1,6 +1,6 @@
 .introduction {
     max-width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     background-color: #313780;
     flex-wrap: wrap;
@@ -10,18 +10,13 @@
     flex-direction: column;
     flex-basis: 400px;
     flex-grow: 1;
+    gap: 2em;
+
 }
 
 .outline-header {
     color: whitesmoke;
     text-align: center;
-}
-
-.outline-items {
-    display: flex;
-    height: auto;
-    flex-direction: column;
-    gap: 2em;
 }
 
 .outline-item {
@@ -46,8 +41,10 @@
 }
 
 .avatar {
-    width: 50% !important; 
-    height: auto !important;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 .wave {
     position: absolute;
