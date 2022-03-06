@@ -5,18 +5,19 @@ import profilePicture from "./static/profile-pic.png";
 import Divider from "@mui/material/Divider";
 import { chips } from "./TechChip";
 import ExperienceCard from "./ExperienceCard";
+import { Fade } from "react-awesome-reveal";
 
 function Header() {
     return (
         <div className={styles.header} >
-            <div className={styles["header-picture-container"]}>
+            <Fade className={styles["header-picture-container"]}>
                 <img className={styles["header-picture"]} src={profilePicture} alt="profile" />
-            </div>
-            <div className={styles["header-text"]}>
+            </Fade>
+            <Fade className={styles["header-text"]}>
                 <Typography variant="h4">
                     My name is Trung, a Software Engineer student at RMIT University Vietnam. I'm at an early stage of becoming a web and mobile app developer. I'm eager to learn and keen on working in a team.
                 </Typography>
-            </div>
+            </Fade>
         </div>
     );
 }
@@ -24,25 +25,37 @@ function Header() {
 function Experience() {
     return (
         <div className={styles["experience"]}>
-            <Typography variant="h4" className={styles["technologies-header"]}>
-                I'm familiar with
-            </Typography>
+            <Fade>
+                <Typography variant="h4" className={styles["technologies-header"]}>
+                    I'm familiar with
+                </Typography>
+            </Fade>
+
             <div className={`${styles["experience-card-container"]}`}>
-                <ExperienceCard name="Front-end" children={[chips.html,
-                chips.css,
-                chips.javascript,
-                chips.typescript,
-                chips.react,
-                ]} />
+                <Fade 
+                damping={0.2}
+                    direction="up"
+                    style={{
+                        flexBasis: "400px",
+                    }}
+                cascade>
+                    <ExperienceCard name="Front-end" children={[chips.html,
+                    chips.css,
+                    chips.javascript,
+                    chips.typescript,
+                    chips.react,
+                    ]} />
 
-                <ExperienceCard name="Mobile Development" children={[
-                    chips.androidstudio,
-                    chips.java,
-                ]} />
+                    <ExperienceCard name="Mobile Development" children={[
+                        chips.androidstudio,
+                        chips.java,
+                    ]} />
 
-                <ExperienceCard name="Back-end" children={[
-                    chips.firebase,
-                ]} />
+                    <ExperienceCard name="Back-end" children={[
+                        chips.firebase,
+                    ]} />
+                </Fade>
+
             </div>
         </div>
     );
@@ -59,7 +72,10 @@ export default function About() {
                 </svg>
             </div>
             <Header />
-            <Divider flexItem className={styles.divider} light />
+            <Fade direction="left" style={{ width: "100%" }}>
+                <Divider flexItem className={styles.divider} light />
+            </Fade>
+
             <Experience />
         </div>
     )

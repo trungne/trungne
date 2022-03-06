@@ -67,7 +67,8 @@
 
 .experience-card {
     background-color: rgb(224, 188, 140) !important;
-    
+    height: 100%;
+
     flex-basis: 400px;
     flex-direction: column;
     
