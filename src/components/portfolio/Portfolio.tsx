@@ -33,29 +33,36 @@ interface ProjectDescriptionProps {
 function ProjectDescription({ description, role, madeWith, githubLink }: ProjectDescriptionProps) {
   return (
     <div className={styles['project-description-container']}>
-      <Typography className={`${globalStyles['white-text']} ${styles['description']}`} variant="h4">
-        {description}
-      </Typography>
+      <Fade damping={0.1}>
+        <Typography className={`${globalStyles['white-text']} ${styles['description']}`} variant="h4">
+          {description}
+        </Typography>
+      </Fade>
 
-      <Typography className={`${globalStyles['white-text']} ${styles['role']}`} variant="subtitle1">
-        {role}
-      </Typography>
-      <div style={{
-        margin: '1em 1em 1em 1em',
-        padding: '1em 1em 1em 1em',
-        display: 'flex',
+      <Fade damping={0.1}>
+        <Typography className={`${globalStyles['white-text']} ${styles['role']}`} variant="subtitle1">
+          {role}
+        </Typography>
+      </Fade>
+      <Fade damping={0.1}>
+        <div style={{
+          margin: '1em 1em 1em 1em',
+          padding: '1em 1em 1em 1em',
+          display: 'flex',
 
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '1em',
-        backgroundColor: "rgba(220, 220, 220, 0.5)",
-        borderRadius: '10px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '1em',
+          backgroundColor: "rgba(220, 220, 220, 0.5)",
+          borderRadius: '10px',
 
-      }}>
-        <MadeWith madeWith={madeWith} />
-        <Divider orientation="vertical" flexItem />
-        <ExternalLink githubLink={githubLink} />
-      </div>
+        }}>
+          <MadeWith madeWith={madeWith} />
+          <Divider orientation="vertical" flexItem />
+          <ExternalLink githubLink={githubLink} />
+        </div>
+      </Fade>
+
 
     </div>
 
@@ -75,7 +82,7 @@ function ProjectShowCase({
 
       {projects.length > 0 &&
         <Box className={styles["project-box"]}>
-          <Fade triggerOnce damping={0.1} cascade>
+          <Fade damping={0.1} cascade>
             {projects.map((project, index) => {
               return (<ProjectCard
                 onProjectSelected={onProjectSelected}

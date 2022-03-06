@@ -81,7 +81,7 @@ export default function Slider({ images }: SliderProps) {
             {
                 images.map((image, idx) => {
                     return (
-                        <div onClick={goRight}
+                        <div
                             style={{ opacity: opacity, transform: `translateX(${x}%)` }}
                             key={idx} className={styles['slide']}>
                             <ImgComp

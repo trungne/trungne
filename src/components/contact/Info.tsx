@@ -12,6 +12,7 @@ import gmailIcon from './static/gmail.png';
 import zaloIcon from './static/zalo.png';
 
 import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 interface SnackBarProps {
     open: boolean,
@@ -29,7 +30,7 @@ function SnackBarCmp({ open, message, onClose }: SnackBarProps) {
 }
 
 export default function Info() {
-    const [info, setInfo] = useState<InfoCardProps>({ info: "" });
+    const [info, setInfo] = useState<InfoCardProps>({ info: null });
     const [openSnackBar, setOpenSnackBar] = useState(false);
 
     const onCopied = () => {
@@ -44,25 +45,32 @@ export default function Info() {
     return (
         <div className={`${globalStyles['center-flex']} ${styles['info']}`}>
             <div className={styles['find-me']}>
-                <Typography variant="h4" className={`${globalStyles["white-text"]} `}>
-                    Find me at
-                </Typography>
+                <Fade>
+                    <Typography variant="h4" className={`${globalStyles["white-text"]} `}>
+                        Find me at
+                    </Typography>
+                </Fade>
 
-                {info && <InfoCard onCopied={onCopied} info={info.info} link={info.link} />}
+                <Fade style={{ width: "100%", maxWidth: "900px" }}>
+                    <InfoCard onCopied={onCopied} info={info.info} link={info.link} />
+                </Fade>
             </div>
 
             <div className={styles['icon-container']}>
-                <div className={styles['icon']} >
-                    <img onClick={() => { handleClick({ info: "GitHub", link: "https://github.com/trungne" }) }} alt="github icon" src={githubIcon} />
-                </div>
+                <Fade damping={0.1} cascade>
+                    <div className={styles['icon']} >
+                        <img onClick={() => { handleClick({ info: "GitHub", link: "https://github.com/trungne" }) }} alt="github icon" src={githubIcon} />
+                    </div>
 
-                <div className={styles['icon']} >
-                    <img onClick={() => { handleClick({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} alt="gmail icon" src={gmailIcon} />
-                </div>
+                    <div className={styles['icon']} >
+                        <img onClick={() => { handleClick({ info: "nguyenquochoangtrung@gmail.com", link: "" }) }} alt="gmail icon" src={gmailIcon} />
+                    </div>
 
-                <div className={styles['icon']} >
-                    <img onClick={() => { handleClick({ info: "+84 93 919 8601", link: "" }) }} alt="zalo icon" src={zaloIcon} />
-                </div>
+                    <div className={styles['icon']} >
+                        <img onClick={() => { handleClick({ info: "+84 93 919 8601", link: "" }) }} alt="zalo icon" src={zaloIcon} />
+                    </div>
+                </Fade>
+
             </div>
 
             <SnackBarCmp onClose={() => { setOpenSnackBar(false) }} open={openSnackBar} message={"Copied"} />
@@ -70,7 +78,7 @@ export default function Info() {
     )
 }
 interface InfoCardProps {
-    info: string,
+    info: string | null,
     link?: string,
     onCopied?: () => void,
 }

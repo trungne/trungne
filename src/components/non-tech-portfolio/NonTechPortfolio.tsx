@@ -8,6 +8,7 @@ import classroomImg from "./static/classroom.jpg";
 import videoImg from "./static/naune.jpg";
 
 import useHovering from "../../hooks/useHovering";
+import { Fade } from "react-awesome-reveal";
 
 export default function NonTechPortfolio() {
     return (
@@ -25,11 +26,14 @@ export default function NonTechPortfolio() {
 function Header() {
     return (
         <div className={styles["header"] + " " + globalStyles["center-flex"]}>
-            <Typography variant="subtitle2" className={globalStyles["white-text"] + " " + styles["header-text"]}>
-                Besides coding, I have been teaching Communicative English since 2016 and achieved an 8.0 IELTS in 2019.
-                I also work in Equitable Learning Services at RMIT University as a Student Aid to help people with learning difficulties take notes in lectures.
-                In my free time, I enjoy running and making informative videos.
-            </Typography>
+            <Fade>
+                <Typography variant="subtitle2" className={globalStyles["white-text"] + " " + styles["header-text"]}>
+                    Besides coding, I have been teaching Communicative English since 2016 and achieved an 8.0 IELTS in 2019.
+                    I also work in Equitable Learning Services at RMIT University as a Student Aid to help people with learning difficulties take notes in lectures.
+                    In my free time, I enjoy running and making informative videos.
+                </Typography>
+            </Fade>
+
         </div>
     )
 }
@@ -39,14 +43,17 @@ function Image(props: { imgPath: string, caption: string, url: string }) {
 
     return (
         <div className={styles["image"]}>
-            <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["image-container"]}>
-                <img alt={props.caption} src={props.imgPath} style={{ width: "100%" }} />
-                {isHovering && <FloatingButton url={props.url} />}
-            </div>
+            <Fade damping={0.4} direction="up" cascade>
+                <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseOut} className={styles["image-container"]}>
+                    <img alt={props.caption} src={props.imgPath} style={{ width: "100%" }} />
+                    {isHovering && <FloatingButton url={props.url} />}
+                </div>
 
-            <Typography className={styles["caption"] + " " + globalStyles["quote"]} variant="caption">
-                {props.caption}
-            </Typography>
+                <Typography className={styles["caption"] + " " + globalStyles["quote"]} variant="caption">
+                    {props.caption}
+                </Typography>
+            </Fade>
+
         </div>
     )
 }
