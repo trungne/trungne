@@ -11,48 +11,10 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import ImgComp from "./ImgComp";
 import MyImage from "../../data-models/MyImage";
 
-import useStateCallback from "../../hooks/useStateCallBack";
-
-import anime from "animejs";
-
 const checkedIcon = <FiberManualRecordIcon key={nanoid()} />
 interface SliderProps {
     images: MyImage[],
 }
-
-
-const fadeOut   = anime({
-    targets: "." + styles['slide'],
-    opacity: 1,
-    easing: 'linear',
-    duration: 250,
-    begin: () => {
-        console.log("Begin fade out");
-    },
-    complete: () => {
-        console.log("finish fade out");
-    },
-    autoplay: false,
-});
-
-const fadeIn   = anime({
-    targets: "." + styles['slide'],
-    opacity: 0,
-    easing: 'linear',
-    duration: 250,
-    begin: () => {
-        console.log("Begin fade in");
-    },
-    complete: () => {
-        console.log("finish fade in");
-        fadeOut.play();
-    },
-    autoplay: false,
-});
-
-
-
-
 
 export default function Slider({ images }: SliderProps) {
     const [x, setX] = useState(0);
@@ -73,7 +35,7 @@ export default function Slider({ images }: SliderProps) {
         if (imageCount === images.length && images.length > 0) {
             setOpacity(1);
         }
-    }, [imageCount])
+    }, [imageCount, images.length])
 
 
     const handleOnLoad = () => {
@@ -141,36 +103,3 @@ export default function Slider({ images }: SliderProps) {
 
     )
 }
-
-
-// useEffect(() => {
-  //   anime({
-  //     targets: "#blob1",
-
-  //     translateX: function() {
-  //       return anime.random(0, 270);
-  //     },
-  //     translateY: function() {
-  //       return anime.random(0, 270);
-  //     },
-  //     direction: 'alternate',
-
-  //     easing: 'linear',
-  //     loop: true,
-  //     duration: 300,
-  //   });
-  //   anime({
-  //     targets: "#blob2",
-
-  //     translateX: function() {
-  //       return anime.random(0, 600);
-  //     },
-  //     translateY: function() {
-  //       return anime.random(0, 600);
-  //     },
-  //     direction: 'alternate',
-  //     easing: 'linear',
-  //     loop: true,
-  //     duration: 3000,
-  //   });
-  // }, [])

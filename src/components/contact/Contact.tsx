@@ -5,7 +5,6 @@ import useHovering from "../../hooks/useHovering";
 import Info from "./Info";
 import SendEmail from "./SendEmail";
 import Footer from "./Footer";
-import Divider from '@mui/material/Divider';
 
 function Wave() {
     return (<div className={styles["wave"]}>

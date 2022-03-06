@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography"
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import Slider from "../slider/Slider";
 
 function Header() {
@@ -89,7 +89,7 @@ function ProjectShowCase({
 export default function Portfolio() {
   const firebaseContext = useContext(FirebaseContext);
   const [projects, setProjects] = useState<ProjectPreview[]>([]);
-  const [index, setIndex] = useState(-1);
+  const [index, setIndex] = useState(0);
 
   const onProjectSelected = (i: number) => {
     setIndex(i);
@@ -110,15 +110,14 @@ export default function Portfolio() {
     <div id="my-work" style={{ position: "relative" }} className={styles['portfolio']}>
       <Header />
       <ProjectShowCase onProjectSelected={onProjectSelected} projects={projects} />
-      <Slider images={index === -1 ? [] : projects[index].previews} />
-      {index !== (-1)
-        && <ProjectDescription
+      {projects.length > 0 && <Fragment>
+        <Slider images={projects[index].previews} />
+        <ProjectDescription
           madeWith={projects[index].madeWith}
           githubLink={projects[index].githubLink}
           role={projects[index].role}
           description={projects[index].description} />
-      }
-
+      </Fragment>}
 
     </div>
   )
